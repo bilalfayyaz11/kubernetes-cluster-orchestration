@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: production-monitor
+spec:
+  selector:
+    matchLabels:
+      app: production-monitor
+  template:
+    metadata:
+      labels:
+        app: production-monitor
+    spec:
+      nodeSelector:
+        environment: production
+      containers:
+      - name: monitor
+        image: busybox:1.36
+        command: ['sh', '-c', 'while true; do echo "Monitoring production node"; sleep 30; done']
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "25m"
+          limits:
+            memory: "64Mi"
+            cpu: "50m"

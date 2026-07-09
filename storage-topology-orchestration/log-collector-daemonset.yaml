@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluent-bit-config
+data:
+  fluent-bit.conf: |
+    [SERVICE]
+        Flush         1
+        Log_Level     info
+        Daemon        off
+    [INPUT]
+        Name          tail
+        Path          /var/log/containers/*.log
+        Tag           kube.*
+    [OUTPUT]
+        Name          stdout
+        Match         *
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: log-collector
+  labels:
+    app: log-collector
+spec:
+  selector:
+    matchLabels:
+      app: log-collector
+  template:
+    metadata:
+      labels:
+        app: log-collector
+    spec:
+      containers:
+      - name: log-collector
+        image: fluent/fluent-bit:3.0.4
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+          readOnly: true
+        - name: config
+          mountPath: /fluent-bit/etc/
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
+      - name: config
+        configMap:
+          name: fluent-bit-config
+      tolerations:
+      - operator: Exists
+        effect: NoSchedule

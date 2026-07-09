@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-monitor
+  labels:
+    app: node-monitor
+spec:
+  selector:
+    matchLabels:
+      app: node-monitor
+  template:
+    metadata:
+      labels:
+        app: node-monitor
+    spec:
+      hostNetwork: true
+      hostPID: true
+      containers:
+      - name: node-monitor
+        image: prom/node-exporter:v1.8.1
+        args:
+        - '--path.procfs=/host/proc'
+        - '--path.sysfs=/host/sys'
+        ports:
+        - containerPort: 9100
+          hostPort: 9100
+          name: metrics
+        volumeMounts:
+        - name: proc
+          mountPath: /host/proc
+          readOnly: true
+        - name: sys
+          mountPath: /host/sys
+          readOnly: true
+      volumes:
+      - name: proc
+        hostPath:
+          path: /proc
+      - name: sys
+        hostPath:
+          path: /sys
+      tolerations:
+      - operator: Exists
+        effect: NoSchedule
