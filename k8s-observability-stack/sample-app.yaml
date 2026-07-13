@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-metrics-app
+  namespace: default
+  labels:
+    app: sample-metrics-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample-metrics-app
+  template:
+    metadata:
+      labels:
+        app: sample-metrics-app
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9100"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: metrics-app
+        image: prom/node-exporter:latest
+        ports:
+        - containerPort: 9100
+          name: metrics
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-metrics-service
+  namespace: default
+  labels:
+    app: sample-metrics-app
+spec:
+  selector:
+    app: sample-metrics-app
+  ports:
+  - port: 9100
+    targetPort: 9100
+    name: metrics
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: sample-app-monitor
+  namespace: monitoring
+  labels:
+    app: sample-metrics-app
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: sample-metrics-app
+  namespaceSelector:
+    matchNames:
+    - default
+  endpoints:
+  - port: metrics
+    interval: 30s
+    path: /metrics
