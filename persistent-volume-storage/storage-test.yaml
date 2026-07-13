@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage-test
+spec:
+  containers:
+    - name: tester
+      image: busybox:1.37
+      command:
+        - sh
+        - -c
+        - while true; do sleep 30; done
+      volumeMounts:
+        - name: storage
+          mountPath: /test-data
+  restartPolicy: Always
+  volumes:
+    - name: storage
+      persistentVolumeClaim:
+        claimName: local-pvc
