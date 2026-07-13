@@ -1,0 +1,149 @@
+=== HPA Monitoring Snapshot ===
+Generated: 2026-07-13T20:33:53+00:00
+
+=== HPA Status ===
+NAME             REFERENCE               TARGETS                          MINPODS   MAXPODS   REPLICAS   AGE
+php-apache-hpa   Deployment/php-apache   cpu: 250%/50%, memory: 29%/70%   1         10        5          4m46s
+
+=== HPA Details ===
+Name:                                                     php-apache-hpa
+Namespace:                                                default
+Labels:                                                   <none>
+Annotations:                                              <none>
+CreationTimestamp:                                        Mon, 13 Jul 2026 20:29:08 +0000
+Reference:                                                Deployment/php-apache
+Metrics:                                                  ( current / target )
+  resource cpu on pods  (as a percentage of request):     250% (500m) / 50%
+  resource memory on pods  (as a percentage of request):  29% (19156Ki) / 70%
+Min replicas:                                             1
+Max replicas:                                             10
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+      - Type: Pods     Value: 4    Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 120 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 50  Period: 60 seconds
+Deployment pods:       5 current / 5 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age   From                       Message
+  ----    ------             ----  ----                       -------
+  Normal  SuccessfulRescale  31s   horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+
+=== Deployment Status ===
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+php-apache   5/5     5            5           7m33s
+
+=== Application Pods ===
+NAME                          READY   STATUS    RESTARTS   AGE     IP            NODE       NOMINATED NODE   READINESS GATES
+php-apache-7c5868b5f8-jx988   1/1     Running   0          31s     10.244.0.13   minikube   <none>           <none>
+php-apache-7c5868b5f8-krlmn   1/1     Running   0          7m33s   10.244.0.5    minikube   <none>           <none>
+php-apache-7c5868b5f8-mbrf6   1/1     Running   0          31s     10.244.0.15   minikube   <none>           <none>
+php-apache-7c5868b5f8-mkr97   1/1     Running   0          31s     10.244.0.12   minikube   <none>           <none>
+php-apache-7c5868b5f8-st9mz   1/1     Running   0          31s     10.244.0.14   minikube   <none>           <none>
+
+=== Resource Usage ===
+NAME                          CPU(cores)   MEMORY(bytes)   
+php-apache-7c5868b5f8-krlmn   500m         18Mi            
+
+=== Scaling Events ===
+7m33s       Normal   ScalingReplicaSet         deployment/php-apache                    Scaled up replica set php-apache-7c5868b5f8 from 0 to 1
+107s        Normal   ScalingReplicaSet         deployment/load-generator                Scaled up replica set load-generator-6ddcc576c5 from 0 to 5
+31s         Normal   ScalingReplicaSet         deployment/php-apache                    Scaled up replica set php-apache-7c5868b5f8 from 1 to 5
+31s         Normal   SuccessfulRescale         horizontalpodautoscaler/php-apache-hpa   New size: 5; reason: cpu resource utilization (percentage of request) above target
+
+=== Current HPA Configuration ===
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"name":"php-apache-hpa","namespace":"default"},"spec":{"behavior":{"scaleDown":{"policies":[{"periodSeconds":60,"type":"Percent","value":50}],"selectPolicy":"Max","stabilizationWindowSeconds":120},"scaleUp":{"policies":[{"periodSeconds":15,"type":"Percent","value":100},{"periodSeconds":15,"type":"Pods","value":4}],"selectPolicy":"Max","stabilizationWindowSeconds":0}},"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":50,"type":"Utilization"}},"type":"Resource"},{"resource":{"name":"memory","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":1,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"php-apache"}}}
+  creationTimestamp: "2026-07-13T20:29:08Z"
+  name: php-apache-hpa
+  namespace: default
+  resourceVersion: "1440"
+  uid: 483f21a3-e70a-4ae9-b8c5-fc88de907302
+spec:
+  behavior:
+    scaleDown:
+      policies:
+      - periodSeconds: 60
+        type: Percent
+        value: 50
+      selectPolicy: Max
+      stabilizationWindowSeconds: 120
+    scaleUp:
+      policies:
+      - periodSeconds: 15
+        type: Percent
+        value: 100
+      - periodSeconds: 15
+        type: Pods
+        value: 4
+      selectPolicy: Max
+      stabilizationWindowSeconds: 0
+  maxReplicas: 10
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 50
+        type: Utilization
+    type: Resource
+  - resource:
+      name: memory
+      target:
+        averageUtilization: 70
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: php-apache
+status:
+  conditions:
+  - lastTransitionTime: "2026-07-13T20:29:23Z"
+    message: recommended size matches current size
+    reason: ReadyForNewScale
+    status: "True"
+    type: AbleToScale
+  - lastTransitionTime: "2026-07-13T20:29:23Z"
+    message: the HPA was able to successfully calculate a replica count from cpu resource
+      utilization (percentage of request)
+    reason: ValidMetricFound
+    status: "True"
+    type: ScalingActive
+  - lastTransitionTime: "2026-07-13T20:29:23Z"
+    message: the desired count is within the acceptable range
+    reason: DesiredWithinRange
+    status: "False"
+    type: ScalingLimited
+  currentMetrics:
+  - resource:
+      current:
+        averageUtilization: 250
+        averageValue: 500m
+      name: cpu
+    type: Resource
+  - resource:
+      current:
+        averageUtilization: 29
+        averageValue: 19156Ki
+      name: memory
+    type: Resource
+  currentReplicas: 5
+  desiredReplicas: 5
+  lastScaleTime: "2026-07-13T20:33:23Z"
