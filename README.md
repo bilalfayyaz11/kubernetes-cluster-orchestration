@@ -11,3 +11,4 @@
 | # | What Was Built | Key Technologies | Level |
 |---|----------------|------------------|-------|
 | 4 | [Persistent Volume Storage for Stateful Kubernetes Workloads](./persistent-volume-storage) | Kubernetes, containerd, Flannel, PersistentVolumes, PersistentVolumeClaims, NGINX | Advanced |
+| 5 | [Kubernetes Observability Stack](./k8s-observability-stack) | k3s, Helm, Prometheus, Grafana, ServiceMonitor, PrometheusRule, Alertmanager | Advanced |
