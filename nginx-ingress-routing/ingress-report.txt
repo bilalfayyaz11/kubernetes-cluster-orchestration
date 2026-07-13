@@ -1,0 +1,103 @@
+=== Kubernetes Ingress Configuration Report ===
+Generated: 2026-07-13T18:31:31+00:00
+
+=== Nodes ===
+NAME              STATUS   ROLES           AGE   VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION            CONTAINER-RUNTIME
+ip-172-31-10-23   Ready    control-plane   19m   v1.36.2   172.31.10.23   <none>        Ubuntu 24.04.3 LTS   6.14.0-1018-aws (amd64)   containerd://2.2.5
+
+=== Application Deployments ===
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+app1              2/2     2            2           10m
+app2              2/2     2            2           10m
+default-backend   1/1     1            1           10m
+
+=== Application Pods ===
+NAME                               READY   STATUS    RESTARTS   AGE   IP            NODE              NOMINATED NODE   READINESS GATES
+app1-66bfbc5d58-78v4m              1/1     Running   0          10m   10.244.0.8    ip-172-31-10-23   <none>           <none>
+app1-66bfbc5d58-hsv4w              1/1     Running   0          10m   10.244.0.7    ip-172-31-10-23   <none>           <none>
+app2-68674b89bc-6l9zv              1/1     Running   0          10m   10.244.0.10   ip-172-31-10-23   <none>           <none>
+app2-68674b89bc-p26ht              1/1     Running   0          10m   10.244.0.9    ip-172-31-10-23   <none>           <none>
+default-backend-6d5d89788f-tp9gh   1/1     Running   0          10m   10.244.0.11   ip-172-31-10-23   <none>           <none>
+
+=== Services ===
+NAME                      TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE   SELECTOR
+app1-service              ClusterIP   10.110.79.0      <none>        80/TCP    10m   app=app1
+app2-service              ClusterIP   10.107.57.207    <none>        80/TCP    10m   app=app2
+default-backend-service   ClusterIP   10.107.137.189   <none>        80/TCP    10m   app=default-backend
+kubernetes                ClusterIP   10.96.0.1        <none>        443/TCP   19m   <none>
+
+=== Ingress Classes ===
+NAME    CONTROLLER             PARAMETERS   AGE
+nginx   k8s.io/ingress-nginx   <none>       15m
+
+=== Ingress Resources ===
+NAME                 CLASS   HOSTS                   ADDRESS        PORTS   AGE
+advanced-ingress     nginx   *                       172.31.10.23   80      3m18s
+host-based-ingress   nginx   app1.local,app2.local   172.31.10.23   80      8m12s
+path-based-ingress   nginx   *                       172.31.10.23   80      8m12s
+
+=== Ingress Rules ===
+Name:             path-based-ingress
+Labels:           <none>
+Namespace:        default
+Address:          172.31.10.23
+Ingress Class:    nginx
+Default backend:  default-backend-service:80 (10.244.0.11:80)
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  *           
+              /app1   app1-service:80 (10.244.0.7:80,10.244.0.8:80)
+              /app2   app2-service:80 (10.244.0.10:80,10.244.0.9:80)
+Annotations:  nginx.ingress.kubernetes.io/rewrite-target: /
+              nginx.ingress.kubernetes.io/ssl-redirect: false
+Events:
+  Type    Reason  Age                    From                      Message
+  ----    ------  ----                   ----                      -------
+  Normal  Sync    7m44s (x2 over 8m12s)  nginx-ingress-controller  Scheduled for sync
+Name:             host-based-ingress
+Labels:           <none>
+Namespace:        default
+Address:          172.31.10.23
+Ingress Class:    nginx
+Default backend:  <default>
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  app1.local  
+              /   app1-service:80 (10.244.0.7:80,10.244.0.8:80)
+  app2.local  
+              /   app2-service:80 (10.244.0.10:80,10.244.0.9:80)
+Annotations:  nginx.ingress.kubernetes.io/ssl-redirect: false
+Events:
+  Type    Reason  Age                    From                      Message
+  ----    ------  ----                   ----                      -------
+  Normal  Sync    7m44s (x2 over 8m12s)  nginx-ingress-controller  Scheduled for sync
+Name:             advanced-ingress
+Labels:           <none>
+Namespace:        default
+Address:          172.31.10.23
+Ingress Class:    nginx
+Default backend:  <default>
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  *           
+              /advanced/app1   app1-service:80 (10.244.0.7:80,10.244.0.8:80)
+              /advanced/app2   app2-service:80 (10.244.0.10:80,10.244.0.9:80)
+Annotations:  nginx.ingress.kubernetes.io/custom-headers: default/advanced-response-headers
+              nginx.ingress.kubernetes.io/rewrite-target: /
+              nginx.ingress.kubernetes.io/ssl-redirect: false
+Events:
+  Type     Reason                   Age                    From                      Message
+  ----     ------                   ----                   ----                      -------
+  Normal   Sync                     2m44s (x2 over 3m17s)  nginx-ingress-controller  Scheduled for sync
+  Warning  AnnotationParsingFailed  2m44s (x2 over 3m17s)  nginx-ingress-controller  Error parsing annotations: location denied, reason: header X-Ingress-Controller is not allowed, defined allowed headers inside global-allowed-response-headers []
+
+=== Ingress Controller ===
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+ingress-nginx-controller   1/1     1            1           15m
+NAME                                        READY   STATUS    RESTARTS   AGE   IP           NODE              NOMINATED NODE   READINESS GATES
+ingress-nginx-controller-744c769855-rxp2q   1/1     Running   0          15m   10.244.0.6   ip-172-31-10-23   <none>           <none>
+NAME                       TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE   SELECTOR
+ingress-nginx-controller   NodePort   10.107.192.117   <none>        80:31649/TCP,443:31732/TCP   15m   app.kubernetes.io/component=controller,app.kubernetes.io/instance=ingress-nginx,app.kubernetes.io/name=ingress-nginx

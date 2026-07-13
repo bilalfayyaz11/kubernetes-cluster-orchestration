@@ -1,0 +1,80 @@
+=== Ingress Validation Report ===
+Generated: 2026-07-13T18:31:31+00:00
+Machine IP: 172.31.10.23
+HTTP NodePort: 31649
+
+=== Path-Based Routing ===
+/ -> HTTP 404
+/app1 -> HTTP 200
+/app2 -> HTTP 200
+/app3 -> HTTP 404
+
+=== Host-Based Routing ===
+app1.local -> HTTP 200
+app2.local -> HTTP 200
+
+=== Advanced Routing ===
+/advanced/app1 -> HTTP 503
+/advanced/app2 -> HTTP 503
+
+=== Custom Response Headers ===
+HTTP/1.1 503 Service Temporarily Unavailable
+
+=== Ingress Resources ===
+NAME                 CLASS   HOSTS                   ADDRESS        PORTS   AGE
+advanced-ingress     nginx   *                       172.31.10.23   80      3m17s
+host-based-ingress   nginx   app1.local,app2.local   172.31.10.23   80      8m11s
+path-based-ingress   nginx   *                       172.31.10.23   80      8m11s
+
+=== Backend Services ===
+NAME                      TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+app1-service              ClusterIP   10.110.79.0      <none>        80/TCP    10m
+app2-service              ClusterIP   10.107.57.207    <none>        80/TCP    10m
+default-backend-service   ClusterIP   10.107.137.189   <none>        80/TCP    10m
+
+=== EndpointSlices ===
+NAME                            ADDRESSTYPE   PORTS   ENDPOINTS                AGE
+app1-service-tdtf2              IPv4          80      10.244.0.7,10.244.0.8    10m
+app2-service-xngtt              IPv4          80      10.244.0.10,10.244.0.9   10m
+default-backend-service-glqh4   IPv4          80      10.244.0.11              10m
+kubernetes                      IPv4          6443    172.31.10.23             19m
+
+=== Controller Status ===
+NAME                                        READY   STATUS    RESTARTS   AGE   IP           NODE              NOMINATED NODE   READINESS GATES
+ingress-nginx-controller-744c769855-rxp2q   1/1     Running   0          15m   10.244.0.6   ip-172-31-10-23   <none>           <none>
+NAME                       TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+ingress-nginx-controller   NodePort   10.107.192.117   <none>        80:31649/TCP,443:31732/TCP   15m
+
+=== Recent Controller Logs ===
+I0713 18:23:24.247693       7 controller.go:231] "Backend successfully reloaded"
+I0713 18:23:24.248065       7 event.go:377] Event(v1.ObjectReference{Kind:"Pod", Namespace:"ingress-nginx", Name:"ingress-nginx-controller-744c769855-rxp2q", UID:"39f1e2b1-4d7f-47f2-ae80-1cde440edee8", APIVersion:"v1", ResourceVersion:"908", FieldPath:""}): type: 'Normal' reason: 'RELOAD' NGINX reload triggered due to a change in configuration
+I0713 18:23:48.241418       7 status.go:311] "updating Ingress status" namespace="default" ingress="host-based-ingress" currentValue=null newValue=[{"ip":"172.31.10.23"}]
+I0713 18:23:48.241547       7 status.go:311] "updating Ingress status" namespace="default" ingress="path-based-ingress" currentValue=null newValue=[{"ip":"172.31.10.23"}]
+I0713 18:23:48.247297       7 event.go:377] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"default", Name:"host-based-ingress", UID:"2b35fe69-6b46-4944-9b4a-f8504a483d54", APIVersion:"networking.k8s.io/v1", ResourceVersion:"1788", FieldPath:""}): type: 'Normal' reason: 'Sync' Scheduled for sync
+I0713 18:23:48.247434       7 event.go:377] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"default", Name:"path-based-ingress", UID:"1b1e30ed-2967-4bbc-b32e-e80bfc3b807c", APIVersion:"networking.k8s.io/v1", ResourceVersion:"1789", FieldPath:""}): type: 'Normal' reason: 'Sync' Scheduled for sync
+E0713 18:28:14.994279       7 annotations.go:216] "error reading Ingress annotation" err="location denied, reason: header X-Ingress-Controller is not allowed, defined allowed headers inside global-allowed-response-headers []" name="CustomHeaders" ingress="default/advanced-ingress"
+I0713 18:28:14.997405       7 main.go:107] "successfully validated configuration, accepting" ingress="default/advanced-ingress"
+I0713 18:28:15.004344       7 store.go:443] "Found valid IngressClass" ingress="default/advanced-ingress" ingressclass="nginx"
+E0713 18:28:15.004698       7 annotations.go:216] "error reading Ingress annotation" err="location denied, reason: header X-Ingress-Controller is not allowed, defined allowed headers inside global-allowed-response-headers []" name="CustomHeaders" ingress="default/advanced-ingress"
+I0713 18:28:15.005268       7 event.go:377] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"default", Name:"advanced-ingress", UID:"fe55349b-70ef-4d6c-9ebf-2469b67fb123", APIVersion:"networking.k8s.io/v1", ResourceVersion:"2202", FieldPath:""}): type: 'Normal' reason: 'Sync' Scheduled for sync
+I0713 18:28:15.005311       7 event.go:377] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"default", Name:"advanced-ingress", UID:"fe55349b-70ef-4d6c-9ebf-2469b67fb123", APIVersion:"networking.k8s.io/v1", ResourceVersion:"2202", FieldPath:""}): type: 'Warning' reason: 'AnnotationParsingFailed' Error parsing annotations: location denied, reason: header X-Ingress-Controller is not allowed, defined allowed headers inside global-allowed-response-headers []
+I0713 18:28:15.009102       7 controller.go:217] "Configuration changes detected, backend reload required"
+I0713 18:28:15.081079       7 controller.go:231] "Backend successfully reloaded"
+I0713 18:28:15.081682       7 event.go:377] Event(v1.ObjectReference{Kind:"Pod", Namespace:"ingress-nginx", Name:"ingress-nginx-controller-744c769855-rxp2q", UID:"39f1e2b1-4d7f-47f2-ae80-1cde440edee8", APIVersion:"v1", ResourceVersion:"908", FieldPath:""}): type: 'Normal' reason: 'RELOAD' NGINX reload triggered due to a change in configuration
+10.244.0.1 - - [13/Jul/2026:18:28:20 +0000] "GET /advanced/app1 HTTP/1.1" 503 190 "-" "curl/8.5.0" 94 0.000 [default-app1-service-80] [] - - - - c3e06105a78cdc38cfbd7ea93ecdf4e3
+I0713 18:28:48.239941       7 status.go:311] "updating Ingress status" namespace="default" ingress="advanced-ingress" currentValue=null newValue=[{"ip":"172.31.10.23"}]
+E0713 18:28:48.244570       7 annotations.go:216] "error reading Ingress annotation" err="location denied, reason: header X-Ingress-Controller is not allowed, defined allowed headers inside global-allowed-response-headers []" name="CustomHeaders" ingress="default/advanced-ingress"
+I0713 18:28:48.244877       7 event.go:377] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"default", Name:"advanced-ingress", UID:"fe55349b-70ef-4d6c-9ebf-2469b67fb123", APIVersion:"networking.k8s.io/v1", ResourceVersion:"2258", FieldPath:""}): type: 'Normal' reason: 'Sync' Scheduled for sync
+I0713 18:28:48.245564       7 event.go:377] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"default", Name:"advanced-ingress", UID:"fe55349b-70ef-4d6c-9ebf-2469b67fb123", APIVersion:"networking.k8s.io/v1", ResourceVersion:"2258", FieldPath:""}): type: 'Warning' reason: 'AnnotationParsingFailed' Error parsing annotations: location denied, reason: header X-Ingress-Controller is not allowed, defined allowed headers inside global-allowed-response-headers []
+I0713 18:28:48.249149       7 controller.go:217] "Configuration changes detected, backend reload required"
+I0713 18:28:48.316947       7 controller.go:231] "Backend successfully reloaded"
+I0713 18:28:48.317188       7 event.go:377] Event(v1.ObjectReference{Kind:"Pod", Namespace:"ingress-nginx", Name:"ingress-nginx-controller-744c769855-rxp2q", UID:"39f1e2b1-4d7f-47f2-ae80-1cde440edee8", APIVersion:"v1", ResourceVersion:"908", FieldPath:""}): type: 'Normal' reason: 'RELOAD' NGINX reload triggered due to a change in configuration
+10.244.0.1 - - [13/Jul/2026:18:31:31 +0000] "GET /app1 HTTP/1.1" 200 362 "-" "curl/8.5.0" 85 0.002 [default-app1-service-80] [] 10.244.0.7:80 362 0.001 200 ee80fb5622c7039c2f5889c97d0411fc
+10.244.0.1 - - [13/Jul/2026:18:31:31 +0000] "GET /app2 HTTP/1.1" 200 362 "-" "curl/8.5.0" 85 0.001 [default-app2-service-80] [] 10.244.0.10:80 362 0.001 200 b3e82e20f1cace06b0d5c2fe2d6d4451
+10.244.0.1 - - [13/Jul/2026:18:31:31 +0000] "GET / HTTP/1.1" 200 362 "-" "curl/8.5.0" 73 0.001 [default-app1-service-80] [] 10.244.0.7:80 362 0.001 200 f97554f9f6a1dc31b16f958c62bac611
+10.244.0.1 - - [13/Jul/2026:18:31:31 +0000] "GET / HTTP/1.1" 200 362 "-" "curl/8.5.0" 73 0.001 [default-app2-service-80] [] 10.244.0.9:80 362 0.001 200 4155598c60d73c7800558782273f7b38
+10.244.0.1 - - [13/Jul/2026:18:31:31 +0000] "GET /advanced/app1 HTTP/1.1" 503 190 "-" "curl/8.5.0" 94 0.000 [default-app1-service-80] [] - - - - af09605ecb89dc28828d2597e4b363c6
+10.244.0.1 - - [13/Jul/2026:18:31:31 +0000] "GET /advanced/app2 HTTP/1.1" 503 190 "-" "curl/8.5.0" 94 0.000 [default-app2-service-80] [] - - - - e4e19c56d750ea8593dee0cb158653e0
+10.244.0.1 - - [13/Jul/2026:18:31:31 +0000] "HEAD /advanced/app1 HTTP/1.1" 503 0 "-" "curl/8.5.0" 95 0.000 [default-app1-service-80] [] - - - - c873d88e5ea7a17bbdcee666edccb2db
+
+=== Validation Complete ===
