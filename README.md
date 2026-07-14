@@ -12,3 +12,4 @@
 |---|----------------|------------------|-------|
 | 4 | [Persistent Volume Storage for Stateful Kubernetes Workloads](./persistent-volume-storage) | Kubernetes, containerd, Flannel, PersistentVolumes, PersistentVolumeClaims, NGINX | Advanced |
 | 5 | [Kubernetes Observability Stack](./k8s-observability-stack) | k3s, Helm, Prometheus, Grafana, ServiceMonitor, PrometheusRule, Alertmanager | Advanced |
+| 6 | [Kubernetes Network Microsegmentation with Calico Policies](./kubernetes-network-microsegmentation) | Kubernetes, Calico CNI, Kind, NetworkPolicy, Namespace Isolation, Zero Trust Networking | Advanced |
