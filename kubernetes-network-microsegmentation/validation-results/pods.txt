@@ -1,0 +1,19 @@
+NAMESPACE            NAME                                                     READY   STATUS    RESTARTS   AGE     IP               NODE                             NOMINATED NODE   READINESS GATES
+backend              backend-app-75444d6d55-p2j7g                             2/2     Running   0          18m     192.168.49.135   network-security-worker          <none>           <none>
+backend              backend-app-75444d6d55-zxjdk                             2/2     Running   0          18m     192.168.49.136   network-security-worker          <none>           <none>
+database             database-app-5dbb9575b8-lj9pf                            2/2     Running   0          18m     192.168.49.137   network-security-worker          <none>           <none>
+diagnostics          network-debug                                            1/1     Running   0          4m18s   192.168.49.140   network-security-worker          <none>           <none>
+frontend             frontend-app-84d6bc9b76-27wvd                            2/2     Running   0          18m     192.168.49.134   network-security-worker          <none>           <none>
+frontend             frontend-app-84d6bc9b76-9s44c                            2/2     Running   0          18m     192.168.49.133   network-security-worker          <none>           <none>
+kube-system          calico-kube-controllers-58f68d56d9-4prl9                 1/1     Running   0          21m     192.168.49.131   network-security-worker          <none>           <none>
+kube-system          calico-node-kwr4c                                        1/1     Running   0          21m     172.18.0.2       network-security-worker          <none>           <none>
+kube-system          calico-node-rmlnm                                        1/1     Running   0          21m     172.18.0.3       network-security-control-plane   <none>           <none>
+kube-system          coredns-589f44dc88-8xq6w                                 1/1     Running   0          25m     192.168.49.130   network-security-worker          <none>           <none>
+kube-system          coredns-589f44dc88-bn68v                                 1/1     Running   0          25m     192.168.49.129   network-security-worker          <none>           <none>
+kube-system          etcd-network-security-control-plane                      1/1     Running   0          25m     172.18.0.3       network-security-control-plane   <none>           <none>
+kube-system          kube-apiserver-network-security-control-plane            1/1     Running   0          25m     172.18.0.3       network-security-control-plane   <none>           <none>
+kube-system          kube-controller-manager-network-security-control-plane   1/1     Running   0          25m     172.18.0.3       network-security-control-plane   <none>           <none>
+kube-system          kube-proxy-5rr8g                                         1/1     Running   0          25m     172.18.0.2       network-security-worker          <none>           <none>
+kube-system          kube-proxy-rgl22                                         1/1     Running   0          25m     172.18.0.3       network-security-control-plane   <none>           <none>
+kube-system          kube-scheduler-network-security-control-plane            1/1     Running   0          25m     172.18.0.3       network-security-control-plane   <none>           <none>
+local-path-storage   local-path-provisioner-855c7b7774-42vp4                  1/1     Running   0          25m     192.168.49.132   network-security-worker          <none>           <none>

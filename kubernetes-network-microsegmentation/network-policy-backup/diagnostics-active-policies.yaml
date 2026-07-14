@@ -1,0 +1,65 @@
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"diagnostics-controlled-egress","namespace":"diagnostics"},"spec":{"egress":[{"ports":[{"port":53,"protocol":"UDP"},{"port":53,"protocol":"TCP"}],"to":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"kube-system"}},"podSelector":{"matchLabels":{"k8s-app":"kube-dns"}}}]},{"ports":[{"port":80,"protocol":"TCP"}],"to":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"backend"}},"podSelector":{"matchLabels":{"app":"backend","tier":"api"}}}]}],"podSelector":{"matchLabels":{"app":"network-debug","role":"diagnostics"}},"policyTypes":["Egress"]}}
+    creationTimestamp: "2026-07-14T23:05:29Z"
+    generation: 1
+    name: diagnostics-controlled-egress
+    namespace: diagnostics
+    resourceVersion: "2897"
+    uid: 3a6c80b2-f731-4fe4-b1d3-5dc23d7fdd8f
+  spec:
+    egress:
+    - ports:
+      - port: 53
+        protocol: UDP
+      - port: 53
+        protocol: TCP
+      to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kube-system
+        podSelector:
+          matchLabels:
+            k8s-app: kube-dns
+    - ports:
+      - port: 80
+        protocol: TCP
+      to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: backend
+        podSelector:
+          matchLabels:
+            app: backend
+            tier: api
+    podSelector:
+      matchLabels:
+        app: network-debug
+        role: diagnostics
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"diagnostics-default-deny","namespace":"diagnostics"},"spec":{"podSelector":{},"policyTypes":["Ingress","Egress"]}}
+    creationTimestamp: "2026-07-14T23:05:29Z"
+    generation: 1
+    name: diagnostics-default-deny
+    namespace: diagnostics
+    resourceVersion: "2896"
+    uid: 84102618-0dfb-4c69-ab83-0510d1abc903
+  spec:
+    podSelector: {}
+    policyTypes:
+    - Ingress
+    - Egress
+kind: List
+metadata:
+  resourceVersion: ""

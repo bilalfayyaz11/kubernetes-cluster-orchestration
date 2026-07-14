@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-diagnostics-access
+  namespace: backend
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+      tier: api
+
+  policyTypes:
+    - Ingress
+
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: diagnostics
+          podSelector:
+            matchLabels:
+              app: network-debug
+              role: diagnostics
+      ports:
+        - protocol: TCP
+          port: 80

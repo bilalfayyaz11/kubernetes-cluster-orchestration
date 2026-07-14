@@ -1,0 +1,6 @@
+NAMESPACE     NAME               TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)                  AGE
+backend       backend-service    ClusterIP   10.96.64.147   <none>        80/TCP                   18m
+database      database-service   ClusterIP   10.96.61.56    <none>        80/TCP                   18m
+default       kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP                  25m
+frontend      frontend-service   ClusterIP   10.96.14.191   <none>        80/TCP                   18m
+kube-system   kube-dns           ClusterIP   10.96.0.10     <none>        53/UDP,53/TCP,9153/TCP   25m
