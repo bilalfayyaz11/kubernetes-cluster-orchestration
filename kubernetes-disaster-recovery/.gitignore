@@ -1,0 +1,7 @@
+credentials/
+storage/
+*.tar.gz
+*.log
+.env
+kubeconfig
+manifests/minio-local.yaml

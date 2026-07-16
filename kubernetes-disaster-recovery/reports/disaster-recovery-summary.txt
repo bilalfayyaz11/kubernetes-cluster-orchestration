@@ -1,0 +1,50 @@
+========================================
+ Kubernetes Disaster Recovery Summary
+========================================
+
+Date:
+Thu Jul 16 21:11:07 UTC 2026
+
+Cluster
+NAME                     STATUS   ROLES           AGE   VERSION
+recovery-control-plane   Ready    control-plane   28m   v1.36.1
+recovery-worker          Ready    <none>          28m   v1.36.1
+recovery-worker2         Ready    <none>          28m   v1.36.1
+
+Namespaces
+NAME                 STATUS   AGE
+backup-storage       Active   28m
+default              Active   28m
+kube-node-lease      Active   28m
+kube-public          Active   28m
+kube-system          Active   28m
+local-path-storage   Active   28m
+recovery-demo        Active   2m31s
+velero               Active   11m
+
+Velero
+NAME                                STATUS      ERRORS   WARNINGS   CREATED                         EXPIRES   STORAGE LOCATION   QUEUE POSITION   SELECTOR
+filesystem-backup-20260716-210744   Completed   0        1          2026-07-16 21:07:44 +0000 UTC   29d       default                             <none>
+initial-backup-20260716-210138      Completed   0        0          2026-07-16 21:01:38 +0000 UTC   29d       default                             <none>
+
+NAME                                 BACKUP                              STATUS      STARTED                         COMPLETED                       ERRORS   WARNINGS   CREATED                         SELECTOR
+filesystem-restore-20260716-210836   filesystem-backup-20260716-210744   Completed   2026-07-16 21:08:36 +0000 UTC   2026-07-16 21:08:37 +0000 UTC   0        1          2026-07-16 21:08:36 +0000 UTC   <none>
+restore-20260716-210331              initial-backup-20260716-210138      Completed   2026-07-16 21:03:31 +0000 UTC   2026-07-16 21:03:32 +0000 UTC   0        1          2026-07-16 21:03:31 +0000 UTC   <none>
+
+NAME             STATUS    CREATED                         SCHEDULE    BACKUP TTL   LAST BACKUP   SELECTOR   PAUSED
+daily-recovery   Enabled   2026-07-16 21:10:36 +0000 UTC   0 2 * * *   720h0m0s     n/a           <none>     false
+
+Backup Storage
+NAME      PROVIDER   BUCKET/PREFIX    PHASE       LAST VALIDATED                  ACCESS MODE   DEFAULT
+default   aws        velero-backups   Available   2026-07-16 21:10:48 +0000 UTC   ReadWrite     true
+
+Persistent Volumes
+NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                       STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+persistentvolume/minio-data                                 5Gi        RWO            Retain           Bound    backup-storage/minio-data   manual         <unset>                          21m
+persistentvolume/pvc-990e1700-f9f2-426f-bd31-b578279cdd5f   1Gi        RWO            Delete           Bound    recovery-demo/web-data      standard       <unset>                          2m29s
+
+NAMESPACE        NAME                               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+backup-storage   persistentvolumeclaim/minio-data   Bound    minio-data                                 5Gi        RWO            manual         <unset>                 21m
+recovery-demo    persistentvolumeclaim/web-data     Bound    pvc-990e1700-f9f2-426f-bd31-b578279cdd5f   1Gi        RWO            standard       <unset>                 2m32s
+
+Finished.

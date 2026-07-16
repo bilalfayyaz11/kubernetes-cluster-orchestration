@@ -1,0 +1,21 @@
+=====================================
+ Velero Backup Validation
+=====================================
+
+Existing Backups
+NAME                                STATUS      ERRORS   WARNINGS   CREATED                         EXPIRES   STORAGE LOCATION   QUEUE POSITION   SELECTOR
+filesystem-backup-20260716-210744   Completed   0        1          2026-07-16 21:07:44 +0000 UTC   29d       default                             <none>
+initial-backup-20260716-210138      Completed   0        0          2026-07-16 21:01:38 +0000 UTC   29d       default                             <none>
+
+Backup Storage
+NAME      PROVIDER   BUCKET/PREFIX    PHASE       LAST VALIDATED                  ACCESS MODE   DEFAULT
+default   aws        velero-backups   Available   2026-07-16 21:10:48 +0000 UTC   ReadWrite     true
+
+Schedules
+NAME             STATUS    CREATED                         SCHEDULE    BACKUP TTL   LAST BACKUP   SELECTOR   PAUSED
+daily-recovery   Enabled   2026-07-16 21:10:36 +0000 UTC   0 2 * * *   720h0m0s     n/a           <none>     false
+
+Recent Restore Operations
+NAME                                 BACKUP                              STATUS      STARTED                         COMPLETED                       ERRORS   WARNINGS   CREATED                         SELECTOR
+filesystem-restore-20260716-210836   filesystem-backup-20260716-210744   Completed   2026-07-16 21:08:36 +0000 UTC   2026-07-16 21:08:37 +0000 UTC   0        1          2026-07-16 21:08:36 +0000 UTC   <none>
+restore-20260716-210331              initial-backup-20260716-210138      Completed   2026-07-16 21:03:31 +0000 UTC   2026-07-16 21:03:32 +0000 UTC   0        1          2026-07-16 21:03:31 +0000 UTC   <none>

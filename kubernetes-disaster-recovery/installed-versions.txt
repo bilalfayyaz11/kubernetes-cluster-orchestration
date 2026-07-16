@@ -1,0 +1,7 @@
+Installed: 2026-07-16T20:40:22+00:00
+Kind: v0.32.0
+Velero: v1.18.2
+kubectl: v1.36.2
+Docker: Docker version 29.6.0, build fb59821
+Helm: v4.2.0+g0646808
+MinIO client: mc version RELEASE.2025-08-13T08-35-41Z (commit-id=7394ce0dd2a80935aded936b09fa12cbb3cb8096)
