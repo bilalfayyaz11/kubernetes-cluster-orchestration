@@ -1,0 +1,6 @@
+Installed: 2026-07-16T22:37:30+00:00
+Docker: Docker version 29.6.0, build fb59821
+kubectl: v1.36.2
+Helm: v4.2.0+g0646808
+Kind: v0.32.0
+Istio: 1.30.3

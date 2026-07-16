@@ -1,0 +1,58 @@
+========================================
+ Istio Mesh Security Verification
+========================================
+
+Generated: 2026-07-16T22:56:06+00:00
+
+Peer Authentication
+-------------------
+NAMESPACE   NAME      MODE     AGE
+default     default   STRICT   101s
+
+Authorization Policies
+----------------------
+NAMESPACE   NAME                       ACTION   AGE
+default     productpage-ingress-only   ALLOW    69s
+
+Proxy Synchronization
+---------------------
+NAME                                                  CLUSTER        ISTIOD                     VERSION     SUBSCRIBED TYPES
+details-v1-65bd58d55f-9qdbf.default                   Kubernetes     istiod-67c645856-2mw4k     1.30.3      4 (CDS,LDS,EDS,RDS)
+istio-egressgateway-6f4fc6cdb9-qdwmn.istio-system     Kubernetes     istiod-67c645856-2mw4k     1.30.3      3 (CDS,LDS,EDS)
+istio-ingressgateway-75858699f-777zl.istio-system     Kubernetes     istiod-67c645856-2mw4k     1.30.3      4 (CDS,LDS,EDS,RDS)
+productpage-v1-7498b5bd44-nj2zw.default               Kubernetes     istiod-67c645856-2mw4k     1.30.3      4 (CDS,LDS,EDS,RDS)
+ratings-v1-9bff6cb79-rtxb8.default                    Kubernetes     istiod-67c645856-2mw4k     1.30.3      4 (CDS,LDS,EDS,RDS)
+reviews-v1-54465994f9-h99bz.default                   Kubernetes     istiod-67c645856-2mw4k     1.30.3      4 (CDS,LDS,EDS,RDS)
+reviews-v2-577579b4c5-bcbdp.default                   Kubernetes     istiod-67c645856-2mw4k     1.30.3      4 (CDS,LDS,EDS,RDS)
+reviews-v3-6d7944df59-7lbdr.default                   Kubernetes     istiod-67c645856-2mw4k     1.30.3      4 (CDS,LDS,EDS,RDS)
+
+Configuration Analysis
+----------------------
+
+
+Ingress Productpage Request
+---------------------------
+HTTP 200
+
+Ratings Resilience Policy
+-------------------------
+{
+  "host": "ratings.default.svc.cluster.local",
+  "connectionPool": {
+    "http": {
+      "http1MaxPendingRequests": 10,
+      "http2MaxRequests": 20,
+      "maxRequestsPerConnection": 10,
+      "maxRetries": 3
+    },
+    "tcp": {
+      "maxConnections": 10
+    }
+  },
+  "outlierDetection": {
+    "baseEjectionTime": "30s",
+    "consecutive5xxErrors": 3,
+    "interval": "10s",
+    "maxEjectionPercent": 100
+  }
+}
