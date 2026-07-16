@@ -1,0 +1,158 @@
+Captured: 2026-07-16T16:06:55+00:00
+
+===== WORKER ALLOCATABLE RESOURCES =====
+NAME                  CPU   MEMORY       PODS
+autoscaling-worker    4     16212224Ki   110
+autoscaling-worker2   4     16212224Ki   110
+
+===== CURRENT RESOURCE REQUESTS =====
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests    Limits
+  --------           --------    ------
+  cpu                950m (23%)  100m (2%)
+  memory             290Mi (1%)  390Mi (2%)
+  ephemeral-storage  0 (0%)      0 (0%)
+  hugepages-1Gi      0 (0%)      0 (0%)
+  hugepages-2Mi      0 (0%)      0 (0%)
+
+
+Name:               autoscaling-worker
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=autoscaling-worker
+                    kubernetes.io/os=linux
+                    workload-role=scalable
+Annotations:        node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Thu, 16 Jul 2026 16:03:39 +0000
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  autoscaling-worker
+  AcquireTime:     <unset>
+  RenewTime:       Thu, 16 Jul 2026 16:06:54 +0000
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Thu, 16 Jul 2026 16:05:11 +0000   Thu, 16 Jul 2026 16:03:39 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Thu, 16 Jul 2026 16:05:11 +0000   Thu, 16 Jul 2026 16:03:39 +0000   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Thu, 16 Jul 2026 16:05:11 +0000   Thu, 16 Jul 2026 16:03:39 +0000   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Thu, 16 Jul 2026 16:05:11 +0000   Thu, 16 Jul 2026 16:03:55 +0000   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:  172.18.0.2
+  Hostname:    autoscaling-worker
+Capacity:
+  cpu:                4
+  ephemeral-storage:  29378688Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             16212224Ki
+  pods:               110
+Allocatable:
+  cpu:                4
+  ephemeral-storage:  29378688Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             16212224Ki
+  pods:               110
+System Info:
+  Machine ID:                 b1f807c824cb4b6886f40352416422d8
+  System UUID:                affc2700-22f8-4579-b198-a5fc446a4c19
+  Boot ID:                    6c256038-2994-4de6-983f-1ca04046559d
+  Kernel Version:             6.14.0-1018-aws
+  OS Image:                   Debian GNU/Linux 13 (trixie)
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://2.3.1
+  Kubelet Version:            v1.36.1
+PodCIDR:                      10.244.1.0/24
+PodCIDRs:                     10.244.1.0/24
+ProviderID:                   kind://docker/autoscaling/autoscaling-worker
+Non-terminated Pods:          (3 in total)
+  Namespace                   Name                             CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                             ------------  ----------  ---------------  -------------  ---
+  kube-system                 kindnet-5v2gm                    100m (2%)     100m (2%)   50Mi (0%)        50Mi (0%)      3m16s
+  kube-system                 kube-proxy-szhg8                 0 (0%)        0 (0%)      0 (0%)           0 (0%)         3m16s
+  kube-system                 metrics-server-f669fc47-cnmcw    100m (2%)     0 (0%)      200Mi (1%)       0 (0%)         2m11s
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests    Limits
+  --------           --------    ------
+  cpu                200m (5%)   100m (2%)
+  memory             250Mi (1%)  50Mi (0%)
+  ephemeral-storage  0 (0%)      0 (0%)
+  hugepages-1Gi      0 (0%)      0 (0%)
+  hugepages-2Mi      0 (0%)      0 (0%)
+
+
+Name:               autoscaling-worker2
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=autoscaling-worker2
+                    kubernetes.io/os=linux
+                    workload-role=scalable
+Annotations:        node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Thu, 16 Jul 2026 16:03:40 +0000
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  autoscaling-worker2
+  AcquireTime:     <unset>
+  RenewTime:       Thu, 16 Jul 2026 16:06:54 +0000
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Thu, 16 Jul 2026 16:04:40 +0000   Thu, 16 Jul 2026 16:03:40 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Thu, 16 Jul 2026 16:04:40 +0000   Thu, 16 Jul 2026 16:03:40 +0000   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Thu, 16 Jul 2026 16:04:40 +0000   Thu, 16 Jul 2026 16:03:40 +0000   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Thu, 16 Jul 2026 16:04:40 +0000   Thu, 16 Jul 2026 16:03:56 +0000   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:  172.18.0.4
+  Hostname:    autoscaling-worker2
+Capacity:
+  cpu:                4
+  ephemeral-storage:  29378688Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             16212224Ki
+  pods:               110
+Allocatable:
+  cpu:                4
+  ephemeral-storage:  29378688Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             16212224Ki
+  pods:               110
+System Info:
+  Machine ID:                 e3de6acc6f274ed7afbff2e033946715
+  System UUID:                505332d4-5bb6-47a7-af51-dd6470cdbfcb
+  Boot ID:                    6c256038-2994-4de6-983f-1ca04046559d
+  Kernel Version:             6.14.0-1018-aws
+  OS Image:                   Debian GNU/Linux 13 (trixie)
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://2.3.1
+  Kubelet Version:            v1.36.1
+PodCIDR:                      10.244.2.0/24
+PodCIDRs:                     10.244.2.0/24
+ProviderID:                   kind://docker/autoscaling/autoscaling-worker2
+Non-terminated Pods:          (2 in total)
+  Namespace                   Name                CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                ------------  ----------  ---------------  -------------  ---
+  kube-system                 kindnet-nvf54       100m (2%)     100m (2%)   50Mi (0%)        50Mi (0%)      3m15s
+  kube-system                 kube-proxy-qpjzj    0 (0%)        0 (0%)      0 (0%)           0 (0%)         3m15s
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests   Limits
+  --------           --------   ------
+  cpu                100m (2%)  100m (2%)
+  memory             50Mi (0%)  50Mi (0%)
+  ephemeral-storage  0 (0%)     0 (0%)
+  hugepages-1Gi      0 (0%)     0 (0%)
+  hugepages-2Mi      0 (0%)     0 (0%)

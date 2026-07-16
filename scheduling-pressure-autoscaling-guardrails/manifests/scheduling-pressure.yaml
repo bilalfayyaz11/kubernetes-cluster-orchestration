@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scheduling-pressure
+  namespace: default
+  labels:
+    app: scheduling-pressure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scheduling-pressure
+  template:
+    metadata:
+      labels:
+        app: scheduling-pressure
+    spec:
+      nodeSelector:
+        workload-role: scalable
+      containers:
+        - name: workload
+          image: registry.k8s.io/pause:3.10.1
+          resources:
+            requests:
+              cpu: "1200m"
+              memory: "256Mi"
+            limits:
+              cpu: "1200m"
+              memory: "256Mi"

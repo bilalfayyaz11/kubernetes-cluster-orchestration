@@ -1,0 +1,62 @@
+Captured: 2026-07-16T16:08:56+00:00
+
+===== WORKLOAD STATE =====
+NAME                                   READY   STATUS    RESTARTS   AGE    IP           NODE                  NOMINATED NODE   READINESS GATES
+scheduling-pressure-6bbf4ffcb4-2ww8l   1/1     Running   0          85s    10.244.2.5   autoscaling-worker2   <none>           <none>
+scheduling-pressure-6bbf4ffcb4-52lzd   1/1     Running   0          85s    10.244.1.3   autoscaling-worker    <none>           <none>
+scheduling-pressure-6bbf4ffcb4-9g448   0/1     Pending   0          85s    <none>       <none>                <none>           <none>
+scheduling-pressure-6bbf4ffcb4-dd7jk   1/1     Running   0          85s    10.244.2.4   autoscaling-worker2   <none>           <none>
+scheduling-pressure-6bbf4ffcb4-f7jpl   0/1     Pending   0          85s    <none>       <none>                <none>           <none>
+scheduling-pressure-6bbf4ffcb4-lzdqt   1/1     Running   0          85s    10.244.1.5   autoscaling-worker    <none>           <none>
+scheduling-pressure-6bbf4ffcb4-vmxnb   1/1     Running   0          109s   10.244.2.3   autoscaling-worker2   <none>           <none>
+scheduling-pressure-6bbf4ffcb4-xrcsp   1/1     Running   0          85s    10.244.1.4   autoscaling-worker    <none>           <none>
+
+===== UNSCHEDULABLE CONDITIONS =====
+POD=scheduling-pressure-6bbf4ffcb4-9g448
+REASON=Unschedulable MESSAGE=0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 Insufficient cpu. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+
+POD=scheduling-pressure-6bbf4ffcb4-f7jpl
+REASON=Unschedulable MESSAGE=0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 Insufficient cpu. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+
+
+===== SCHEDULER EVENTS =====
+109s        Normal    ScalingReplicaSet         deployment/scheduling-pressure              Scaled up replica set scheduling-pressure-6bbf4ffcb4 from 0 to 1
+109s        Normal    SuccessfulCreate          replicaset/scheduling-pressure-6bbf4ffcb4   Created pod: scheduling-pressure-6bbf4ffcb4-vmxnb
+109s        Normal    Scheduled                 pod/scheduling-pressure-6bbf4ffcb4-vmxnb    Successfully assigned default/scheduling-pressure-6bbf4ffcb4-vmxnb to autoscaling-worker2
+108s        Normal    Created                   pod/scheduling-pressure-6bbf4ffcb4-vmxnb    Container created
+108s        Normal    Pulling                   pod/scheduling-pressure-6bbf4ffcb4-vmxnb    Pulling image "registry.k8s.io/pause:3.10.1"
+108s        Normal    Started                   pod/scheduling-pressure-6bbf4ffcb4-vmxnb    Container started
+108s        Normal    Pulled                    pod/scheduling-pressure-6bbf4ffcb4-vmxnb    Successfully pulled image "registry.k8s.io/pause:3.10.1" in 422ms (422ms including waiting). Image size: 320448 bytes.
+85s         Normal    SuccessfulCreate          replicaset/scheduling-pressure-6bbf4ffcb4   Created pod: scheduling-pressure-6bbf4ffcb4-52lzd
+85s         Normal    Scheduled                 pod/scheduling-pressure-6bbf4ffcb4-xrcsp    Successfully assigned default/scheduling-pressure-6bbf4ffcb4-xrcsp to autoscaling-worker
+85s         Normal    ScalingReplicaSet         deployment/scheduling-pressure              Scaled up replica set scheduling-pressure-6bbf4ffcb4 from 1 to 8
+85s         Normal    SuccessfulCreate          replicaset/scheduling-pressure-6bbf4ffcb4   Created pod: scheduling-pressure-6bbf4ffcb4-lzdqt
+85s         Normal    SuccessfulCreate          replicaset/scheduling-pressure-6bbf4ffcb4   Created pod: scheduling-pressure-6bbf4ffcb4-2ww8l
+85s         Normal    SuccessfulCreate          replicaset/scheduling-pressure-6bbf4ffcb4   Created pod: scheduling-pressure-6bbf4ffcb4-dd7jk
+85s         Normal    SuccessfulCreate          replicaset/scheduling-pressure-6bbf4ffcb4   Created pod: scheduling-pressure-6bbf4ffcb4-xrcsp
+85s         Normal    Scheduled                 pod/scheduling-pressure-6bbf4ffcb4-52lzd    Successfully assigned default/scheduling-pressure-6bbf4ffcb4-52lzd to autoscaling-worker
+84s         Normal    Pulling                   pod/scheduling-pressure-6bbf4ffcb4-lzdqt    Pulling image "registry.k8s.io/pause:3.10.1"
+85s         Normal    Scheduled                 pod/scheduling-pressure-6bbf4ffcb4-lzdqt    Successfully assigned default/scheduling-pressure-6bbf4ffcb4-lzdqt to autoscaling-worker
+85s         Warning   FailedScheduling          pod/scheduling-pressure-6bbf4ffcb4-9g448    0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 Insufficient cpu. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+85s         Normal    Scheduled                 pod/scheduling-pressure-6bbf4ffcb4-2ww8l    Successfully assigned default/scheduling-pressure-6bbf4ffcb4-2ww8l to autoscaling-worker2
+85s         Normal    SuccessfulCreate          replicaset/scheduling-pressure-6bbf4ffcb4   Created pod: scheduling-pressure-6bbf4ffcb4-9g448
+84s         Normal    Started                   pod/scheduling-pressure-6bbf4ffcb4-2ww8l    Container started
+85s         Normal    SuccessfulCreate          replicaset/scheduling-pressure-6bbf4ffcb4   Created pod: scheduling-pressure-6bbf4ffcb4-f7jpl
+85s         Warning   FailedScheduling          pod/scheduling-pressure-6bbf4ffcb4-f7jpl    0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 Insufficient cpu. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+85s         Normal    Scheduled                 pod/scheduling-pressure-6bbf4ffcb4-dd7jk    Successfully assigned default/scheduling-pressure-6bbf4ffcb4-dd7jk to autoscaling-worker2
+84s         Normal    Pulling                   pod/scheduling-pressure-6bbf4ffcb4-52lzd    Pulling image "registry.k8s.io/pause:3.10.1"
+84s         Normal    Created                   pod/scheduling-pressure-6bbf4ffcb4-2ww8l    Container created
+84s         Normal    Pulling                   pod/scheduling-pressure-6bbf4ffcb4-xrcsp    Pulling image "registry.k8s.io/pause:3.10.1"
+84s         Normal    Pulled                    pod/scheduling-pressure-6bbf4ffcb4-dd7jk    Container image "registry.k8s.io/pause:3.10.1" already present on machine and can be accessed by the pod
+84s         Normal    Created                   pod/scheduling-pressure-6bbf4ffcb4-dd7jk    Container created
+84s         Normal    Started                   pod/scheduling-pressure-6bbf4ffcb4-dd7jk    Container started
+84s         Normal    Pulled                    pod/scheduling-pressure-6bbf4ffcb4-2ww8l    Container image "registry.k8s.io/pause:3.10.1" already present on machine and can be accessed by the pod
+83s         Normal    Pulled                    pod/scheduling-pressure-6bbf4ffcb4-52lzd    Successfully pulled image "registry.k8s.io/pause:3.10.1" in 515ms (515ms including waiting). Image size: 320448 bytes.
+83s         Normal    Started                   pod/scheduling-pressure-6bbf4ffcb4-xrcsp    Container started
+83s         Normal    Created                   pod/scheduling-pressure-6bbf4ffcb4-xrcsp    Container created
+83s         Normal    Pulled                    pod/scheduling-pressure-6bbf4ffcb4-xrcsp    Successfully pulled image "registry.k8s.io/pause:3.10.1" in 113ms (434ms including waiting). Image size: 320448 bytes.
+83s         Normal    Started                   pod/scheduling-pressure-6bbf4ffcb4-52lzd    Container started
+83s         Normal    Created                   pod/scheduling-pressure-6bbf4ffcb4-52lzd    Container created
+83s         Normal    Started                   pod/scheduling-pressure-6bbf4ffcb4-lzdqt    Container started
+83s         Normal    Created                   pod/scheduling-pressure-6bbf4ffcb4-lzdqt    Container created
+83s         Normal    Pulled                    pod/scheduling-pressure-6bbf4ffcb4-lzdqt    Successfully pulled image "registry.k8s.io/pause:3.10.1" in 115ms (513ms including waiting). Image size: 320448 bytes.

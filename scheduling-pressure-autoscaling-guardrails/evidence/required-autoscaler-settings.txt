@@ -1,0 +1,27 @@
+Required Cluster Autoscaler settings:
+
+--expander=least-waste
+--scale-down-utilization-threshold=0.5
+--scale-down-unneeded-time=2m
+--scale-down-delay-after-add=2m
+--skip-nodes-with-system-pods=false
+--skip-nodes-with-local-storage=false
+--v=4
+
+Infrastructure requirement:
+
+The controller must also receive a real cloud-provider configuration and
+node-group discovery configuration.
+
+Valid examples include:
+
+AWS:
+--cloud-provider=aws
+--node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,kubernetes.io/cluster/<cluster-name>
+
+Cluster API:
+--cloud-provider=clusterapi
+--node-group-auto-discovery=clusterapi:namespace=<namespace>,clusterName=<cluster-name>
+
+The existing kind workers are not members of either an AWS Auto Scaling Group
+or a Cluster API MachineDeployment, MachineSet, or MachinePool.

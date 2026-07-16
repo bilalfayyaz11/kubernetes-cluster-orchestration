@@ -1,0 +1,6 @@
+Captured: 2026-07-16T16:05:22+00:00
+
+NAME                        CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+autoscaling-control-plane   262m         6%       518Mi           3%          
+autoscaling-worker          48m          1%       144Mi           0%          
+autoscaling-worker2         87m          2%       123Mi           0%          

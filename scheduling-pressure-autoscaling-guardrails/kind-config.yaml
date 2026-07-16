@@ -1,0 +1,11 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: autoscaling
+nodes:
+  - role: control-plane
+  - role: worker
+    labels:
+      workload-role: scalable
+  - role: worker
+    labels:
+      workload-role: scalable

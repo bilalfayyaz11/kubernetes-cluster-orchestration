@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: protected-service
+  namespace: default
+  labels:
+    app: protected-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: protected-service
+  template:
+    metadata:
+      labels:
+        app: protected-service
+    spec:
+      nodeSelector:
+        workload-role: scalable
+      containers:
+        - name: web
+          image: nginx:1.29-alpine
+          ports:
+            - name: http
+              containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "64Mi"
+            limits:
+              cpu: "250m"
+              memory: "128Mi"
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: protected-service-pdb
+  namespace: default
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: protected-service

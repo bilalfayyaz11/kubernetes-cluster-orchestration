@@ -1,0 +1,48 @@
+Snapshot: Post Scale-Down Attempt
+Timestamp: 2026-07-16T16:14:56+00:00
+
+===== NODES =====
+NAME                        STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION            CONTAINER-RUNTIME
+autoscaling-control-plane   Ready    control-plane   11m   v1.36.1   172.18.0.3    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+autoscaling-worker          Ready    <none>          11m   v1.36.1   172.18.0.2    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+autoscaling-worker2         Ready    <none>          11m   v1.36.1   172.18.0.4    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+
+===== NODE METRICS =====
+NAME                        CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+autoscaling-control-plane   241m         6%       573Mi           3%          
+autoscaling-worker          105m         2%       148Mi           0%          
+autoscaling-worker2         76m          1%       164Mi           1%          
+
+===== PROTECTED POD =====
+NAME                                 READY   STATUS    RESTARTS   AGE     IP           NODE                 NOMINATED NODE   READINESS GATES
+protected-service-67fd8f9848-99ffc   1/1     Running   0          3m57s   10.244.1.6   autoscaling-worker   <none>           <none>
+
+===== POD DISRUPTION BUDGET =====
+NAME                    MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+protected-service-pdb   1               N/A               0                     3m57s
+
+===== DRAIN EVIDENCE =====
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default" (will retry after 5s): Cannot evict pod as it would violate the pod's disruption budget.
+There are pending pods in node "autoscaling-worker" when an error occurred: error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default": global timeout reached: 1m30s
+error: unable to drain node "autoscaling-worker" due to error: error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default": global timeout reached: 1m30s, continuing command...
+There are pending nodes to be drained:
+error when evicting pods/"protected-service-67fd8f9848-99ffc" -n "default": global timeout reached: 1m30s
+Drain exit code: 1
+Drain exit code: 

@@ -1,0 +1,15 @@
+Captured: 2026-07-16T16:09:52+00:00
+
+===== WORKLOAD AFTER PRESSURE REDUCTION =====
+NAME                                   READY   STATUS    RESTARTS   AGE     IP           NODE                  NOMINATED NODE   READINESS GATES
+scheduling-pressure-6bbf4ffcb4-2ww8l   1/1     Running   0          2m21s   10.244.2.5   autoscaling-worker2   <none>           <none>
+scheduling-pressure-6bbf4ffcb4-vmxnb   1/1     Running   0          2m45s   10.244.2.3   autoscaling-worker2   <none>           <none>
+
+===== WORKER METRICS =====
+NAME                        CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+autoscaling-control-plane   257m         6%       560Mi           3%          
+autoscaling-worker          182m         4%       153Mi           0%          
+autoscaling-worker2         91m          2%       139Mi           0%          
+
+===== NODE COUNT =====
+3

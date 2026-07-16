@@ -1,0 +1,22 @@
+# Cluster Autoscaler Infrastructure Discovery
+
+Captured: 2026-07-16T16:06:36+00:00
+
+## Cluster API resources
+
+clusterrolebindings                              rbac.authorization.k8s.io/v1      false        ClusterRoleBinding
+clusterroles                                     rbac.authorization.k8s.io/v1      false        ClusterRole
+
+## MachineDeployments
+error: the server doesn't have a resource type "machinedeployments"
+
+## MachineSets
+error: the server doesn't have a resource type "machinesets"
+
+## MachinePools
+error: the server doesn't have a resource type "machinepools"
+
+## AWS Auto Scaling discovery
+
+An error occurred (AccessDenied) when calling the DescribeAutoScalingGroups operation: User: arn:aws:sts::698355729228:assumed-role/AL-NAFI-CLOUD-LABS-Role/i-081baa2bd21547f5d is not authorized to perform: autoscaling:DescribeAutoScalingGroups because no identity-based policy allows the autoscaling:DescribeAutoScalingGroups action
+AWS CLI or AWS credentials unavailable; kind workers are not EC2 Auto Scaling Group instances.

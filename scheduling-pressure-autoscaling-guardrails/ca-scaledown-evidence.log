@@ -1,0 +1,22 @@
+Captured: 2026-07-16T16:10:02+00:00
+
+Cluster Autoscaler scale-down execution was not started.
+
+Reason:
+The two kind worker nodes are Docker containers created directly by kind.
+They are not owned by an EC2 Auto Scaling Group, Cluster API
+MachineDeployment, MachineSet, or MachinePool.
+
+Cluster Autoscaler can evaluate Kubernetes scheduling state only when paired
+with a provider that exposes a resizable node group. The clusterapi provider
+cannot delete these workers because no Cluster API infrastructure objects own
+them. An external gRPC provider was not available.
+
+Observed node count:
+3
+
+Observed nodes:
+NAME                        STATUS   ROLES           AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION            CONTAINER-RUNTIME
+autoscaling-control-plane   Ready    control-plane   6m35s   v1.36.1   172.18.0.3    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+autoscaling-worker          Ready    <none>          6m23s   v1.36.1   172.18.0.2    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+autoscaling-worker2         Ready    <none>          6m22s   v1.36.1   172.18.0.4    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1

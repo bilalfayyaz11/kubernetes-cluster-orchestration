@@ -1,0 +1,220 @@
+
+Timestamp: 2026-07-16T16:12:16+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:19+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:21+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:23+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:25+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:27+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:29+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:31+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:34+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:36+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:38+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:40+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:42+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:44+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:46+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:48+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:51+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:53+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:55+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:57+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:12:59+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:01+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:03+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:05+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:08+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:10+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:12+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:14+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:16+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:18+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:20+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:23+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:25+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:27+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:29+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:31+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:33+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:35+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:37+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:40+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:42+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:44+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:46+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:48+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:50+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:52+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:54+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:56+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:13:59+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:14:01+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:14:03+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:14:05+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:14:07+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:14:09+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>
+
+Timestamp: 2026-07-16T16:14:11+00:00
+NAME                                 STATUS    NODE                 DELETION-TIMESTAMP
+protected-service-67fd8f9848-99ffc   Running   autoscaling-worker   <none>

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: autoscaler-node-group-policy
+  namespace: kube-system
+data:
+  minimum-nodes: "2"
+  maximum-nodes: "5"
+  expander: "least-waste"
+  scale-down-utilization-threshold: "0.5"
+  scale-down-unneeded-time: "2m"
+  scale-down-delay-after-add: "2m"
+  implementation-status: |
+    Policy documented for a provider-managed node group.
+    The current kind workers are Docker containers and are not members of a
+    resizable AWS Auto Scaling Group or Cluster API MachineDeployment.

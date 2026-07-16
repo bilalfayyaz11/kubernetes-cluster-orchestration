@@ -1,0 +1,29 @@
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiregistration.k8s.io/v1","kind":"APIService","metadata":{"annotations":{},"labels":{"k8s-app":"metrics-server"},"name":"v1beta1.metrics.k8s.io"},"spec":{"group":"metrics.k8s.io","groupPriorityMinimum":100,"insecureSkipTLSVerify":true,"service":{"name":"metrics-server","namespace":"kube-system"},"version":"v1beta1","versionPriority":100}}
+  creationTimestamp: "2026-07-16T16:04:31Z"
+  labels:
+    k8s-app: metrics-server
+  name: v1beta1.metrics.k8s.io
+  resourceVersion: "805"
+  uid: 43c08fc1-595f-49f0-99db-5c94cd38a6a1
+spec:
+  group: metrics.k8s.io
+  groupPriorityMinimum: 100
+  insecureSkipTLSVerify: true
+  service:
+    name: metrics-server
+    namespace: kube-system
+    port: 443
+  version: v1beta1
+  versionPriority: 100
+status:
+  conditions:
+  - lastTransitionTime: "2026-07-16T16:05:13Z"
+    message: all checks passed
+    reason: Passed
+    status: "True"
+    type: Available

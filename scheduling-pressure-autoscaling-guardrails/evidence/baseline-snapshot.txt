@@ -1,0 +1,22 @@
+Snapshot: Baseline
+Timestamp: 2026-07-16T16:11:25+00:00
+
+===== NODES =====
+NAME                        STATUS   ROLES           AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION            CONTAINER-RUNTIME
+autoscaling-control-plane   Ready    control-plane   7m58s   v1.36.1   172.18.0.3    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+autoscaling-worker          Ready    <none>          7m46s   v1.36.1   172.18.0.2    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+autoscaling-worker2         Ready    <none>          7m45s   v1.36.1   172.18.0.4    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+
+===== NODE METRICS =====
+NAME                        CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+autoscaling-control-plane   282m         7%       560Mi           3%          
+autoscaling-worker          338m         8%       178Mi           1%          
+autoscaling-worker2         46m          1%       141Mi           0%          
+
+===== PROTECTED POD =====
+NAME                                 READY   STATUS    RESTARTS   AGE   IP           NODE                 NOMINATED NODE   READINESS GATES
+protected-service-67fd8f9848-99ffc   1/1     Running   0          25s   10.244.1.6   autoscaling-worker   <none>           <none>
+
+===== POD DISRUPTION BUDGET =====
+NAME                    MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+protected-service-pdb   1               N/A               0                     25s

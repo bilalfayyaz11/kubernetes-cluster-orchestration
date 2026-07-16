@@ -1,0 +1,14 @@
+I0716 16:04:47.519542       1 serving.go:405] Generated self-signed cert (/tmp/apiserver.crt, /tmp/apiserver.key)
+I0716 16:04:47.988851       1 handler.go:304] Adding GroupVersion metrics.k8s.io v1beta1 to ResourceManager
+I0716 16:04:48.099601       1 requestheader_controller.go:180] Starting RequestHeaderAuthRequestController
+I0716 16:04:48.099669       1 configmap_cafile_content.go:205] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
+I0716 16:04:48.099716       1 shared_informer.go:402] "Waiting for caches to sync"
+I0716 16:04:48.099749       1 shared_informer.go:402] "Waiting for caches to sync"
+I0716 16:04:48.099809       1 configmap_cafile_content.go:205] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file"
+I0716 16:04:48.099845       1 shared_informer.go:402] "Waiting for caches to sync"
+I0716 16:04:48.102674       1 secure_serving.go:214] Serving securely on [::]:10250
+I0716 16:04:48.103225       1 tlsconfig.go:243] "Starting DynamicServingCertificateController"
+I0716 16:04:48.103714       1 dynamic_serving_content.go:135] "Starting controller" name="serving-cert::/tmp/apiserver.crt::/tmp/apiserver.key"
+I0716 16:04:48.199817       1 shared_informer.go:409] "Caches are synced"
+I0716 16:04:48.199946       1 shared_informer.go:409] "Caches are synced"
+I0716 16:04:48.199985       1 shared_informer.go:409] "Caches are synced"

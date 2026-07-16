@@ -1,0 +1,35 @@
+==== START logs for container kindnet-cni of pod kube-system/kindnet-nvf54 ====
+I0716 16:03:45.530024       1 main.go:413] probe TCP address autoscaling-control-plane:6443
+I0716 16:03:45.533600       1 main.go:114] connected to apiserver: https://autoscaling-control-plane:6443
+I0716 16:03:45.533981       1 main.go:144] hostIP = 172.18.0.4
+podIP = 172.18.0.4
+I0716 16:03:45.561799       1 main.go:153] setting mtu 1500 for CNI 
+I0716 16:03:45.562116       1 main.go:183] kindnetd IP family: "ipv4"
+I0716 16:03:45.563036       1 main.go:187] noMask IPv4 subnets: [10.244.0.0/16]
+I0716 16:03:46.030681       1 controller.go:173] "Starting controller" name="kube-network-policies"
+I0716 16:03:46.030721       1 controller.go:178] "Waiting for the policy engine to become ready..."
+I0716 16:03:46.530859       1 controller.go:185] "Policy engine is ready."
+I0716 16:03:46.531025       1 metrics.go:72] Registering metrics
+I0716 16:03:46.531160       1 controller.go:462] "Syncing nftables rules" logger="nftables-sync"
+I0716 16:03:46.638647       1 controller.go:465] "Syncing nftables rules" logger="nftables-sync" elapsed="107.417121ms"
+I0716 16:03:56.029757       1 main.go:320] Handling node with IPs: map[172.18.0.2:{}]
+I0716 16:03:56.029889       1 main.go:347] Node autoscaling-worker has CIDR [10.244.1.0/24] 
+I0716 16:03:56.030314       1 routes.go:62] Adding route {Ifindex: 0 Dst: 10.244.1.0/24 Src: <nil> Gw: 172.18.0.2 Flags: [] Table: 0 Realm: 0} 
+I0716 16:03:56.030603       1 main.go:320] Handling node with IPs: map[172.18.0.4:{}]
+I0716 16:03:56.030630       1 main.go:324] handling current node
+I0716 16:03:56.040537       1 main.go:320] Handling node with IPs: map[172.18.0.3:{}]
+I0716 16:03:56.040577       1 main.go:347] Node autoscaling-control-plane has CIDR [10.244.0.0/24] 
+I0716 16:03:56.040762       1 routes.go:62] Adding route {Ifindex: 0 Dst: 10.244.0.0/24 Src: <nil> Gw: 172.18.0.3 Flags: [] Table: 0 Realm: 0} 
+I0716 16:04:06.031051       1 main.go:320] Handling node with IPs: map[172.18.0.2:{}]
+I0716 16:04:06.031092       1 main.go:347] Node autoscaling-worker has CIDR [10.244.1.0/24] 
+I0716 16:04:06.031290       1 main.go:320] Handling node with IPs: map[172.18.0.4:{}]
+I0716 16:04:06.031319       1 main.go:324] handling current node
+I0716 16:04:06.031336       1 main.go:320] Handling node with IPs: map[172.18.0.3:{}]
+I0716 16:04:06.031345       1 main.go:347] Node autoscaling-control-plane has CIDR [10.244.0.0/24] 
+I0716 16:04:16.035402       1 main.go:320] Handling node with IPs: map[172.18.0.2:{}]
+I0716 16:04:16.035468       1 main.go:347] Node autoscaling-worker has CIDR [10.244.1.0/24] 
+I0716 16:04:16.035665       1 main.go:320] Handling node with IPs: map[172.18.0.4:{}]
+I0716 16:04:16.035797       1 main.go:324] handling current node
+I0716 16:04:16.035833       1 main.go:320] Handling node with IPs: map[172.18.0.3:{}]
+I0716 16:04:16.035845       1 main.go:347] Node autoscaling-control-plane has CIDR [10.244.0.0/24] 
+==== END logs for container kindnet-cni of pod kube-system/kindnet-nvf54 ====
