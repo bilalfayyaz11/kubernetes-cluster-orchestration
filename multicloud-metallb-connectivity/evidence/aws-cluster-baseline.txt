@@ -1,0 +1,30 @@
+Captured: 2026-07-16T18:30:29+00:00
+
+Kubernetes control plane is running at https://127.0.0.1:6443
+CoreDNS is running at https://127.0.0.1:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+NAME                        STATUS   ROLES           AGE    VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION            CONTAINER-RUNTIME
+aws-cluster-control-plane   Ready    control-plane   108s   v1.36.1   172.18.0.3    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+aws-cluster-worker          Ready    <none>          96s    v1.36.1   172.18.0.4    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+aws-cluster-worker2         Ready    <none>          96s    v1.36.1   172.18.0.2    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1
+
+NAME                        STATUS   ROLES           AGE    VERSION   CLOUD   REGION
+aws-cluster-control-plane   Ready    control-plane   108s   v1.36.1   aws     us-east-1
+aws-cluster-worker          Ready    <none>          96s    v1.36.1   aws     us-east-1
+aws-cluster-worker2         Ready    <none>          96s    v1.36.1   aws     us-east-1
+
+NAME                                                READY   STATUS    RESTARTS   AGE    IP           NODE                        NOMINATED NODE   READINESS GATES
+coredns-589f44dc88-ppj9d                            1/1     Running   0          98s    10.240.0.2   aws-cluster-control-plane   <none>           <none>
+coredns-589f44dc88-ssj4t                            1/1     Running   0          98s    10.240.0.3   aws-cluster-control-plane   <none>           <none>
+etcd-aws-cluster-control-plane                      1/1     Running   0          105s   172.18.0.3   aws-cluster-control-plane   <none>           <none>
+kindnet-5bsn7                                       1/1     Running   0          98s    172.18.0.3   aws-cluster-control-plane   <none>           <none>
+kindnet-998fs                                       1/1     Running   0          96s    172.18.0.4   aws-cluster-worker          <none>           <none>
+kindnet-vd52s                                       1/1     Running   0          96s    172.18.0.2   aws-cluster-worker2         <none>           <none>
+kube-apiserver-aws-cluster-control-plane            1/1     Running   0          106s   172.18.0.3   aws-cluster-control-plane   <none>           <none>
+kube-controller-manager-aws-cluster-control-plane   1/1     Running   0          105s   172.18.0.3   aws-cluster-control-plane   <none>           <none>
+kube-proxy-chqrd                                    1/1     Running   0          96s    172.18.0.4   aws-cluster-worker          <none>           <none>
+kube-proxy-szj9q                                    1/1     Running   0          98s    172.18.0.3   aws-cluster-control-plane   <none>           <none>
+kube-proxy-vlc2k                                    1/1     Running   0          96s    172.18.0.2   aws-cluster-worker2         <none>           <none>
+kube-scheduler-aws-cluster-control-plane            1/1     Running   0          107s   172.18.0.3   aws-cluster-control-plane   <none>           <none>

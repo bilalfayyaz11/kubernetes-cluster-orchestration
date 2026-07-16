@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gcp-web-config
+  namespace: multicloud
+data:
+  default.conf: |
+    server {
+      listen 80;
+
+      location / {
+        default_type text/plain;
+        return 200 "Hello from GCP Cluster\n";
+      }
+
+      location /health {
+        default_type text/plain;
+        return 200 "OK";
+      }
+
+      location /info {
+        default_type application/json;
+        return 200 '{"cluster":"gcp","region":"us-central1"}';
+      }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcp-web
+  namespace: multicloud
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gcp-web
+  template:
+    metadata:
+      labels:
+        app: gcp-web
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.29-alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: config
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: config
+        configMap:
+          name: gcp-web-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gcp-web
+  namespace: multicloud
+  annotations:
+    metallb.io/address-pool: gcp-pool
+spec:
+  selector:
+    app: gcp-web
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer

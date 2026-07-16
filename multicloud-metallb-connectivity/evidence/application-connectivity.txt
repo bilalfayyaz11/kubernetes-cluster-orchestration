@@ -1,0 +1,29 @@
+Captured: 2026-07-16T19:00:47+00:00
+
+===== AWS APPLICATION =====
+NAME                          READY   STATUS    RESTARTS   AGE   IP           NODE                  NOMINATED NODE   READINESS GATES
+pod/aws-web-846ccd54c-bts5c   1/1     Running   0          18m   10.240.2.2   aws-cluster-worker2   <none>           <none>
+pod/aws-web-846ccd54c-zhw5p   1/1     Running   0          18m   10.240.1.2   aws-cluster-worker    <none>           <none>
+
+NAME              TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)        AGE   SELECTOR
+service/aws-web   LoadBalancer   10.241.146.100   172.18.255.205   80:30542/TCP   18m   app=aws-web
+
+===== GCP APPLICATION =====
+NAME                           READY   STATUS    RESTARTS   AGE   IP           NODE                  NOMINATED NODE   READINESS GATES
+pod/gcp-web-55fb84fdf9-gcjc7   1/1     Running   0          18m   10.244.2.2   gcp-cluster-worker    <none>           <none>
+pod/gcp-web-55fb84fdf9-zzwgv   1/1     Running   0          18m   10.244.1.2   gcp-cluster-worker2   <none>           <none>
+
+NAME              TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE   SELECTOR
+service/gcp-web   LoadBalancer   10.96.24.132   172.18.255.225   80:31716/TCP   18m   app=gcp-web
+
+===== HOST TO AWS =====
+{"cluster":"aws","region":"us-east-1"}
+
+===== HOST TO GCP =====
+{"cluster":"gcp","region":"us-central1"}
+
+===== AWS TO GCP =====
+{"cluster":"gcp","region":"us-central1"}pod "aws-cross-cluster-client" deleted from multicloud namespace
+
+===== GCP TO AWS =====
+{"cluster":"aws","region":"us-east-1"}pod "gcp-cross-cluster-client" deleted from multicloud namespace

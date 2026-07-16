@@ -1,0 +1,18 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+
+nodes:
+  - role: control-plane
+    labels:
+      cloud: gcp
+      region: us-central1
+
+  - role: worker
+    labels:
+      cloud: gcp
+      region: us-central1
+
+  - role: worker
+    labels:
+      cloud: gcp
+      region: us-central1

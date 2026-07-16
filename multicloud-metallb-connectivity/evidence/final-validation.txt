@@ -1,0 +1,68 @@
+Captured: 2026-07-16T19:03:10+00:00
+
+===== KUBERNETES CONTEXTS =====
+CURRENT   NAME               CLUSTER            AUTHINFO           NAMESPACE
+          kind-aws-cluster   kind-aws-cluster   kind-aws-cluster   
+*         kind-gcp-cluster   kind-gcp-cluster   kind-gcp-cluster   
+
+===== AWS NODES =====
+NAME                        STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION            CONTAINER-RUNTIME    CLOUD   REGION
+aws-cluster-control-plane   Ready    control-plane   34m   v1.36.1   172.18.0.3    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1   aws     us-east-1
+aws-cluster-worker          Ready    <none>          34m   v1.36.1   172.18.0.4    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1   aws     us-east-1
+aws-cluster-worker2         Ready    <none>          34m   v1.36.1   172.18.0.2    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1   aws     us-east-1
+
+===== GCP NODES =====
+NAME                        STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION            CONTAINER-RUNTIME    CLOUD   REGION
+gcp-cluster-control-plane   Ready    control-plane   23m   v1.36.1   172.18.0.7    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1   gcp     us-central1
+gcp-cluster-worker          Ready    <none>          23m   v1.36.1   172.18.0.5    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1   gcp     us-central1
+gcp-cluster-worker2         Ready    <none>          23m   v1.36.1   172.18.0.6    <none>        Debian GNU/Linux 13 (trixie)   6.14.0-1018-aws (amd64)   containerd://2.3.1   gcp     us-central1
+
+===== AWS METALLB =====
+NAME                             READY   STATUS    RESTARTS   AGE     IP           NODE                        NOMINATED NODE   READINESS GATES
+pod/controller-658745d67-84twr   1/1     Running   0          6m45s   10.240.1.3   aws-cluster-worker          <none>           <none>
+pod/speaker-56sc9                1/1     Running   0          6m45s   172.18.0.2   aws-cluster-worker2         <none>           <none>
+pod/speaker-hz9dc                1/1     Running   0          6m45s   172.18.0.4   aws-cluster-worker          <none>           <none>
+pod/speaker-svcnm                1/1     Running   0          6m45s   172.18.0.3   aws-cluster-control-plane   <none>           <none>
+
+NAME                                AUTO ASSIGN   AVOID BUGGY IPS   ADDRESSES
+ipaddresspool.metallb.io/aws-pool   true          false             ["172.18.255.205-172.18.255.224"]
+
+NAME                                              IPADDRESSPOOLS   IPADDRESSPOOL SELECTORS   INTERFACES   NODE SELECTORS
+l2advertisement.metallb.io/aws-l2-advertisement   ["aws-pool"]                                            
+
+===== GCP METALLB =====
+NAME                             READY   STATUS    RESTARTS   AGE     IP           NODE                        NOMINATED NODE   READINESS GATES
+pod/controller-658745d67-s79qn   1/1     Running   0          6m43s   10.244.2.3   gcp-cluster-worker          <none>           <none>
+pod/speaker-5z2n9                1/1     Running   0          6m43s   172.18.0.5   gcp-cluster-worker          <none>           <none>
+pod/speaker-ht54n                1/1     Running   0          6m43s   172.18.0.7   gcp-cluster-control-plane   <none>           <none>
+pod/speaker-m8wrd                1/1     Running   0          6m43s   172.18.0.6   gcp-cluster-worker2         <none>           <none>
+
+NAME                                AUTO ASSIGN   AVOID BUGGY IPS   ADDRESSES
+ipaddresspool.metallb.io/gcp-pool   true          false             ["172.18.255.225-172.18.255.244"]
+
+NAME                                              IPADDRESSPOOLS   IPADDRESSPOOL SELECTORS   INTERFACES   NODE SELECTORS
+l2advertisement.metallb.io/gcp-l2-advertisement   ["gcp-pool"]                                            
+
+===== AWS APPLICATION =====
+NAME                          READY   STATUS    RESTARTS   AGE   IP           NODE                  NOMINATED NODE   READINESS GATES
+pod/aws-web-846ccd54c-bts5c   1/1     Running   0          21m   10.240.2.2   aws-cluster-worker2   <none>           <none>
+pod/aws-web-846ccd54c-zhw5p   1/1     Running   0          21m   10.240.1.2   aws-cluster-worker    <none>           <none>
+
+NAME              TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)        AGE   SELECTOR
+service/aws-web   LoadBalancer   10.241.146.100   172.18.255.205   80:30542/TCP   21m   app=aws-web
+
+===== GCP APPLICATION =====
+NAME                           READY   STATUS    RESTARTS   AGE   IP           NODE                  NOMINATED NODE   READINESS GATES
+pod/gcp-web-55fb84fdf9-gcjc7   1/1     Running   0          20m   10.244.2.2   gcp-cluster-worker    <none>           <none>
+pod/gcp-web-55fb84fdf9-zzwgv   1/1     Running   0          20m   10.244.1.2   gcp-cluster-worker2   <none>           <none>
+
+NAME              TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE   SELECTOR
+service/gcp-web   LoadBalancer   10.96.24.132   172.18.255.225   80:31716/TCP   20m   app=gcp-web
+
+===== HOST CONNECTIVITY =====
+AWS: {"cluster":"aws","region":"us-east-1"}
+GCP: {"cluster":"gcp","region":"us-central1"}
+
+===== CROSS-CLUSTER CONNECTIVITY =====
+AWS to GCP: {"cluster":"gcp","region":"us-central1"}{"cluster":"gcp","region":"us-central1"}pod "final-aws-client" deleted from multicloud namespace
+GCP to AWS: {"cluster":"aws","region":"us-east-1"}{"cluster":"aws","region":"us-east-1"}pod "final-gcp-client" deleted from multicloud namespace

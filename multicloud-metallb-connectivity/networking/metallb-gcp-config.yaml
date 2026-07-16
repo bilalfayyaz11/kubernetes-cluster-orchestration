@@ -1,0 +1,17 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: gcp-pool
+  namespace: metallb-system
+spec:
+  addresses:
+    - 172.18.255.225-172.18.255.244
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: gcp-l2-advertisement
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+    - gcp-pool

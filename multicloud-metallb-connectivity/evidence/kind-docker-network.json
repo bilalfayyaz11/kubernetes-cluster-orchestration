@@ -1,0 +1,74 @@
+[
+    {
+        "Name": "kind",
+        "Id": "f80cce0568afe6319e29a06ce31047411b2f7762c0f38ac1167a56bdd5642c29",
+        "Created": "2026-07-16T18:28:16.028311312Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": true,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "fc00:f853:ccd:e793::/64",
+                    "Gateway": "fc00:f853:ccd:e793::1"
+                },
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {},
+        "Containers": {
+            "87acc086e3a4e0c9a42fed5539646f7b7676df4e865bc5ce37bce6d9881dc483": {
+                "Name": "aws-cluster-worker2",
+                "EndpointID": "18c94762861ffe11a06666f691a156e734d722dce9f1217263c431227803eb2a",
+                "MacAddress": "e6:6a:d7:57:2a:b5",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": "fc00:f853:ccd:e793::2/64"
+            },
+            "bc643d0c4b4fb00bf531c4fd881c99635d04076f7d9bfde3f94f3f882981db76": {
+                "Name": "aws-cluster-control-plane",
+                "EndpointID": "5eb6540e44e9f51564e493d93c7a505d2be3d2ee0e2a3f34c9c5dddda8fd7f57",
+                "MacAddress": "7a:62:47:3b:df:92",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": "fc00:f853:ccd:e793::3/64"
+            },
+            "cb81462c10650008c434164c113833f68b9f51c3dfaa992b2c8685a1852d9d0c": {
+                "Name": "aws-cluster-worker",
+                "EndpointID": "8fac0623a7d26be8952446c1f055122ee8e55fd515b63e98013843479abeed58",
+                "MacAddress": "56:e4:b4:89:73:99",
+                "IPv4Address": "172.18.0.4/16",
+                "IPv6Address": "fc00:f853:ccd:e793::4/64"
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.18.0.0/16": {
+                        "IPsInUse": 6,
+                        "DynamicIPsAvailable": 65530
+                    },
+                    "fc00:f853:ccd:e793::/64": {
+                        "IPsInUse": 5,
+                        "DynamicIPsAvailable": 18446744073709551611
+                    }
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,4 @@
+NAMES                       STATUS              IMAGE                  NETWORKS
+aws-cluster-control-plane   Up About a minute   kindest/node:v1.36.1   kind
+aws-cluster-worker          Up About a minute   kindest/node:v1.36.1   kind
+aws-cluster-worker2         Up About a minute   kindest/node:v1.36.1   kind
