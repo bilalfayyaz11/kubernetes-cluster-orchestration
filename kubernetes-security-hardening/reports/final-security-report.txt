@@ -1,0 +1,143 @@
+=================================================
+ Final Kubernetes Security Assessment
+=================================================
+
+Assessment date: 2026-07-16T19:36:35+00:00
+Cluster context: kubernetes-admin@kubernetes
+
+Pod Security Standards
+----------------------
+NAME              ENFORCE      AUDIT        WARN
+baseline-ns       baseline     baseline     baseline
+default           <none>       <none>       <none>
+kube-node-lease   <none>       <none>       <none>
+kube-public       <none>       <none>       <none>
+kube-system       <none>       <none>       <none>
+privileged-ns     privileged   <none>       <none>
+restricted-ns     restricted   restricted   restricted
+
+Node Status
+-----------
+NAME               STATUS   ROLES           AGE   VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION            CONTAINER-RUNTIME
+ip-172-31-10-224   Ready    control-plane   19m   v1.36.2   172.31.10.224   <none>        Ubuntu 24.04.3 LTS   6.14.0-1018-aws (amd64)   containerd://2.2.5
+
+Workload Status
+---------------
+NAMESPACE       NAME                                       READY   STATUS             RESTARTS      AGE    IP              NODE               NOMINATED NODE   READINESS GATES
+kube-system     calico-kube-controllers-5b84fd7749-t9cpb   1/1     Running            0             19m    192.168.83.67   ip-172-31-10-224   <none>           <none>
+kube-system     calico-node-w25ks                          1/1     Running            0             19m    172.31.10.224   ip-172-31-10-224   <none>           <none>
+kube-system     coredns-589f44dc88-bvnm8                   1/1     Running            0             19m    192.168.83.65   ip-172-31-10-224   <none>           <none>
+kube-system     coredns-589f44dc88-fppmm                   1/1     Running            0             19m    192.168.83.66   ip-172-31-10-224   <none>           <none>
+kube-system     etcd-ip-172-31-10-224                      1/1     Running            0             19m    172.31.10.224   ip-172-31-10-224   <none>           <none>
+kube-system     kube-apiserver-ip-172-31-10-224            1/1     Running            0             19m    172.31.10.224   ip-172-31-10-224   <none>           <none>
+kube-system     kube-controller-manager-ip-172-31-10-224   1/1     Running            0             19m    172.31.10.224   ip-172-31-10-224   <none>           <none>
+kube-system     kube-proxy-2gsjw                           1/1     Running            0             19m    172.31.10.224   ip-172-31-10-224   <none>           <none>
+kube-system     kube-scheduler-ip-172-31-10-224            1/1     Running            0             19m    172.31.10.224   ip-172-31-10-224   <none>           <none>
+privileged-ns   privileged-test                            1/1     Running            0             18m    192.168.83.68   ip-172-31-10-224   <none>           <none>
+restricted-ns   restricted-demo                            0/1     CrashLoopBackOff   8 (85s ago)   17m    192.168.83.69   ip-172-31-10-224   <none>           <none>
+restricted-ns   secure-nginx-b6c9d89cc-p57h2               1/1     Running            0             114s   192.168.83.70   ip-172-31-10-224   <none>           <none>
+restricted-ns   secure-nginx-b6c9d89cc-qrkmw               1/1     Running            0             114s   192.168.83.71   ip-172-31-10-224   <none>           <none>
+
+Privileged Containers
+---------------------
+kube-system/calico-node-w25ks	upgrade-ipam
+kube-system/calico-node-w25ks	install-cni
+kube-system/calico-node-w25ks	ebpf-bootstrap
+kube-system/calico-node-w25ks	calico-node
+kube-system/kube-proxy-2gsjw	kube-proxy
+privileged-ns/privileged-test	nginx
+
+Explicit Root Containers
+------------------------
+privileged-ns/privileged-test	nginx
+
+Containers Allowing Privilege Escalation
+----------------------------------------
+kube-system/calico-kube-controllers-5b84fd7749-t9cpb	calico-kube-controllers
+kube-system/calico-node-w25ks	upgrade-ipam
+kube-system/calico-node-w25ks	install-cni
+kube-system/calico-node-w25ks	ebpf-bootstrap
+kube-system/calico-node-w25ks	calico-node
+kube-system/etcd-ip-172-31-10-224	etcd
+kube-system/kube-apiserver-ip-172-31-10-224	kube-apiserver
+kube-system/kube-controller-manager-ip-172-31-10-224	kube-controller-manager
+kube-system/kube-proxy-2gsjw	kube-proxy
+kube-system/kube-scheduler-ip-172-31-10-224	kube-scheduler
+privileged-ns/privileged-test	nginx
+
+Seccomp Configuration
+---------------------
+kube-system    calico-kube-controllers-5b84fd7749-t9cpb  RuntimeDefault
+kube-system    calico-node-w25ks                         RuntimeDefault
+kube-system    coredns-589f44dc88-bvnm8                  not-set
+kube-system    coredns-589f44dc88-fppmm                  not-set
+kube-system    etcd-ip-172-31-10-224                     RuntimeDefault
+kube-system    kube-apiserver-ip-172-31-10-224           RuntimeDefault
+kube-system    kube-controller-manager-ip-172-31-10-224  RuntimeDefault
+kube-system    kube-proxy-2gsjw                          not-set
+kube-system    kube-scheduler-ip-172-31-10-224           RuntimeDefault
+privileged-ns  privileged-test                           not-set
+restricted-ns  restricted-demo                           RuntimeDefault
+restricted-ns  secure-nginx-b6c9d89cc-p57h2              RuntimeDefault
+restricted-ns  secure-nginx-b6c9d89cc-qrkmw              RuntimeDefault
+
+Network Policies
+----------------
+
+Resource Quotas
+---------------
+
+Limit Ranges
+------------
+
+RBAC Object Counts
+------------------
+ClusterRoles: 75
+ClusterRoleBindings: 62
+Namespaced Roles: 11
+Namespaced RoleBindings: 11
+
+Recent Warning Events
+---------------------
+kube-system     19m         Warning   FailedCreatePodSandBox   pod/coredns-589f44dc88-bvnm8                   Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "92df8068a6c0ec4f58a4b05874b0160182af95f705aa99418899fdabe2f935fe": plugin type="calico" failed (add): stat /var/lib/calico/nodename: no such file or directory: check that the calico/node container is running and has mounted /var/lib/calico/
+kube-system     19m         Warning   FailedCreatePodSandBox   pod/calico-kube-controllers-5b84fd7749-t9cpb   Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "c9af532da3f4ce4a848b51a47ecb0ecf72448f28146b30f5c2027f1fdf3a0854": plugin type="calico" failed (add): stat /var/lib/calico/nodename: no such file or directory: check that the calico/node container is running and has mounted /var/lib/calico/
+kube-system     19m         Warning   FailedCreatePodSandBox   pod/coredns-589f44dc88-fppmm                   Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "a810da52746ca4ed336b0c4be049899c29964a649f45d3b62fca403b20d9c26c": plugin type="calico" failed (add): stat /var/lib/calico/nodename: no such file or directory: check that the calico/node container is running and has mounted /var/lib/calico/
+kube-system     19m         Warning   FailedCreatePodSandBox   pod/coredns-589f44dc88-bvnm8                   Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "23c4e8c6898e1e9cb1b0560dae0504067bf5a94bb5374d9851f6609a09a1ae9d": plugin type="calico" failed (add): error creating calico client: host must be a URL or a host:port pair: "https://[10.96.0.1]:443"
+kube-system     19m         Warning   Unhealthy                pod/calico-node-w25ks                          Readiness probe failed: calico/node is not ready: BIRD is not ready: failed to stat() nodename file: stat /var/lib/calico/nodename: no such file or directory
+kube-system     18m         Warning   Unhealthy                pod/calico-node-w25ks                          Readiness probe failed: calico/node is not ready: BIRD is not ready: error querying BIRD: unable to connect to BIRDv4 socket: dial unix /var/run/bird/bird.ctl: connect: no such file or directory
+kube-system     18m         Warning   FailedCreatePodSandBox   pod/calico-kube-controllers-5b84fd7749-t9cpb   Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "97a91ff5fcacb47d8a89566c7bb1887463e2957ae860003a04c72427bfcb7ca0": plugin type="calico" failed (add): error creating calico client: host must be a URL or a host:port pair: "https://[10.96.0.1]:443"
+kube-system     18m         Warning   Unhealthy                pod/coredns-589f44dc88-bvnm8                   Readiness probe failed: Get "http://192.168.83.65:8181/ready": dial tcp 192.168.83.65:8181: connect: connection refused
+kube-system     18m         Warning   Unhealthy                pod/coredns-589f44dc88-fppmm                   Readiness probe failed: Get "http://192.168.83.66:8181/ready": dial tcp 192.168.83.66:8181: connect: connection refused
+restricted-ns   13s         Warning   BackOff                  pod/restricted-demo                            Back-off restarting failed container nginx in pod restricted-demo_restricted-ns(b45b903e-7d52-4136-be65-2e1748fe84ba)
+restricted-ns   13m         Warning   FailedCreate             replicaset/secure-nginx-77f984685              Error creating: pods "secure-nginx-77f984685-gmw8d" is forbidden: violates PodSecurity "restricted:latest": seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
+restricted-ns   13m         Warning   FailedCreate             replicaset/secure-nginx-77f984685              Error creating: pods "secure-nginx-77f984685-dglfg" is forbidden: violates PodSecurity "restricted:latest": seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
+restricted-ns   13m         Warning   FailedCreate             replicaset/secure-nginx-77f984685              Error creating: pods "secure-nginx-77f984685-lmsgd" is forbidden: violates PodSecurity "restricted:latest": seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
+restricted-ns   13m         Warning   FailedCreate             replicaset/secure-nginx-77f984685              Error creating: pods "secure-nginx-77f984685-7xxv7" is forbidden: violates PodSecurity "restricted:latest": seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
+restricted-ns   13m         Warning   FailedCreate             replicaset/secure-nginx-77f984685              Error creating: pods "secure-nginx-77f984685-9zv7t" is forbidden: violates PodSecurity "restricted:latest": seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
+restricted-ns   13m         Warning   FailedCreate             replicaset/secure-nginx-77f984685              Error creating: pods "secure-nginx-77f984685-t5n2h" is forbidden: violates PodSecurity "restricted:latest": seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
+restricted-ns   13m         Warning   FailedCreate             replicaset/secure-nginx-77f984685              Error creating: pods "secure-nginx-77f984685-k9t59" is forbidden: violates PodSecurity "restricted:latest": seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
+restricted-ns   13m         Warning   FailedCreate             replicaset/secure-nginx-77f984685              Error creating: pods "secure-nginx-77f984685-lh7rl" is forbidden: violates PodSecurity "restricted:latest": seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
+restricted-ns   13m         Warning   FailedCreate             replicaset/secure-nginx-77f984685              Error creating: pods "secure-nginx-77f984685-mcb27" is forbidden: violates PodSecurity "restricted:latest": seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
+restricted-ns   2m43s       Warning   FailedCreate             replicaset/secure-nginx-77f984685              (combined from similar events): Error creating: pods "secure-nginx-77f984685-ddd49" is forbidden: violates PodSecurity "restricted:latest": seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
+
+Security Report Artifacts
+-------------------------
+final-security-report.txt	16 KB
+kube-bench-analysis.txt	8 KB
+kube-bench-controlplane.txt	4 KB
+kube-bench-etcd.txt	4 KB
+kube-bench-node.txt	8 KB
+kube-bench-results.txt	28 KB
+nginx-image-report.json	600 KB
+security-summary.txt	36 KB
+
+Recommended Actions
+-------------------
+1. Remove privileged workloads that are not explicitly required.
+2. Ensure application containers run as non-root users.
+3. Require RuntimeDefault or approved Localhost seccomp profiles.
+4. Apply default-deny NetworkPolicies to application namespaces.
+5. Review HIGH and CRITICAL image vulnerabilities before deployment.
+6. Investigate failed CIS controls and document accepted risks.
+7. Apply resource requests, limits, quotas, and LimitRanges consistently.
+8. Minimize RBAC permissions and periodically review bindings.

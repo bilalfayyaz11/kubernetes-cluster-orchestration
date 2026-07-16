@@ -1,0 +1,29 @@
+[INFO] 3 Control Plane Configuration
+[INFO] 3.1 Authentication and Authorization
+[WARN] 3.1.1 Client certificate authentication should not be used for users (Manual)
+[INFO] 3.2 Logging
+[WARN] 3.2.1 Ensure that a minimal audit policy is created (Manual)
+[WARN] 3.2.2 Ensure that the audit policy covers key security concerns (Manual)
+
+== Remediations controlplane ==
+3.1.1 Alternative mechanisms provided by Kubernetes such as the use of OIDC should be
+implemented in place of client certificates.
+
+3.2.1 Create an audit policy file for your cluster.
+
+3.2.2 Consider modification of the audit policy in use on the cluster to include these items, at a
+minimum.
+
+
+== Summary controlplane ==
+0 checks PASS
+0 checks FAIL
+3 checks WARN
+0 checks INFO
+
+== Summary total ==
+0 checks PASS
+0 checks FAIL
+3 checks WARN
+0 checks INFO
+
