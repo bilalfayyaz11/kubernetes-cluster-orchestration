@@ -1,0 +1,16 @@
+replicaCount: 3
+
+application:
+  title: Production Web Delivery
+  heading: Helm release lifecycle demonstration
+  message: This release was deployed with an environment-specific values file.
+  environment: production
+
+podLabels:
+  environment: production
+  managed-by: helm
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: http
