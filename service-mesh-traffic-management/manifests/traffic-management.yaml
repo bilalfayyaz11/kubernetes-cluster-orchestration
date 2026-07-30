@@ -1,0 +1,104 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: microservices-gateway
+  namespace: microservices
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
+---
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: backend-destination
+  namespace: microservices
+spec:
+  host: backend
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+    - name: v2
+      labels:
+        version: v2
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: frontend-ingress
+  namespace: microservices
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - microservices-gateway
+  http:
+    - route:
+        - destination:
+            host: frontend
+            port:
+              number: 80
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: backend-route
+  namespace: microservices
+spec:
+  hosts:
+    - backend
+  http:
+    - match:
+        - headers:
+            user-type:
+              exact: premium
+      route:
+        - destination:
+            host: backend
+            subset: v2
+
+    - match:
+        - headers:
+            test-user:
+              exact: "true"
+      route:
+        - destination:
+            host: backend
+            subset: v2
+
+    - match:
+        - uri:
+            prefix: /api/v1
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: backend
+            subset: v1
+
+    - match:
+        - uri:
+            prefix: /api/v2
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: backend
+            subset: v2
+
+    - route:
+        - destination:
+            host: backend
+            subset: v1
+          weight: 90
+        - destination:
+            host: backend
+            subset: v2
+          weight: 10
